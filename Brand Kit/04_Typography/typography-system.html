@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Typography System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: var(--ivory);
+    color: var(--forest);
+  }
+  header {
+    background: var(--forest);
+    padding: 56px 64px 48px;
+    border-bottom: 3px solid var(--gold);
+  }
+  header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  header p {
+    font-size: 15px;
+    color: var(--sage);
+    margin-top: 10px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0d9ce;
+  }
+  .type-block {
+    margin-bottom: 48px;
+  }
+  .type-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  .type-tag {
+    background: var(--forest);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+  .type-info {
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+  }
+  .specimen-panel {
+    background: white;
+    border: 1px solid #e8e0d0;
+    border-radius: 12px;
+    padding: 40px 48px;
+    margin-bottom: 16px;
+  }
+  .specimen-panel.dark {
+    background: var(--forest);
+  }
+  .spec-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0eae0;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-row.dark-row {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .spec-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    min-width: 100px;
+  }
+  .spec-label.light { color: var(--sage); }
+  .spec-text { flex: 1; line-height: 1.2; }
+  .google-embed {
+    background: var(--deep);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 16px;
+  }
+  .google-embed .embed-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+  .google-embed code {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--cream);
+    word-break: break-all;
+    line-height: 1.6;
+  }
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .usage-card {
+    background: white;
+    border: 1px solid #e8e0d0;
+    border-radius: 10px;
+    padding: 28px;
+  }
+  .usage-card h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 16px;
+  }
+  .usage-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+  .divider { height: 1px; background: #e8e0d0; margin: 48px 0; }
+  footer {
+    background: var(--forest);
+    padding: 32px 64px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--sage);
+    letter-spacing: 1px;
+  }
+  .hierarchy-demo {
+    background: white;
+    border: 1px solid #e8e0d0;
+    border-radius: 12px;
+    padding: 48px;
+    margin-bottom: 16px;
+  }
+  .h1-demo { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 48px; color: var(--forest); line-height: 1.1; margin-bottom: 8px; }
+  .h2-demo { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 32px; color: var(--forest); line-height: 1.2; margin-bottom: 8px; }
+  .h3-demo { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; color: var(--forest); margin-bottom: 8px; }
+  .h4-demo { font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 16px; color: var(--fern); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .body-demo { font-family: 'Baloo 2', sans-serif; font-weight: 400; font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Brand Identity System</div>
+  <h1>Typography</h1>
+  <p>Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Baloo 2 Type System</p>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Brand Typeface</div>
+
+  <div class="type-block">
+    <div class="type-meta">
+      <span class="type-tag">Primary Font</span>
+      <span class="type-info">Baloo 2 &nbsp;&middot;&nbsp; Google Fonts &nbsp;&middot;&nbsp; Free, Open License</span>
+    </div>
+    <div class="specimen-panel">
+      <div class="spec-row">
+        <div class="spec-label">ExtraBold 800</div>
+        <div class="spec-text" style="font-family:'Baloo 2'; font-weight:800; font-size:52px; color:var(--forest);">LAXMI THARAVADU</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Bold 700</div>
+        <div class="spec-text" style="font-family:'Baloo 2'; font-weight:700; font-size:40px; color:var(--forest);">Heritage Home</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">SemiBold 600</div>
+        <div class="spec-text" style="font-family:'Baloo 2'; font-weight:600; font-size:28px; color:var(--forest);">Koovode, Thaliparamba</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Regular 400</div>
+        <div class="spec-text" style="font-family:'Baloo 2'; font-weight:400; font-size:18px; color:#555;">Where the forest breathes and old walls hold a hundred stories</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="specimen-panel dark" style="margin-bottom: 16px;">
+    <div class="spec-row dark-row">
+      <div class="spec-label light">On Dark / 800</div>
+      <div class="spec-text" style="font-family:'Baloo 2'; font-weight:800; font-size:48px; color:var(--gold);">LAXMI THARAVADU</div>
+    </div>
+    <div class="spec-row dark-row">
+      <div class="spec-label light">On Dark / 700</div>
+      <div class="spec-text" style="font-family:'Baloo 2'; font-weight:700; font-size:32px; color:var(--cream);">Heritage Home, Kannur</div>
+    </div>
+    <div class="spec-row dark-row">
+      <div class="spec-label light">On Dark / 400</div>
+      <div class="spec-text" style="font-family:'Baloo 2'; font-weight:400; font-size:16px; color:var(--sage);">Where the forest breathes and old walls hold a hundred stories</div>
+    </div>
+  </div>
+
+  <div class="google-embed">
+    <div class="embed-label">Google Fonts Embed Code</div>
+    <code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;<br>
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;<br>
+&lt;link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"&gt;</code>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Heading Hierarchy</div>
+
+  <div class="hierarchy-demo">
+    <div class="h4-demo">Section Label &nbsp;&middot;&nbsp; Heritage &amp; Story</div>
+    <div class="h1-demo">Laxmi Tharavadu</div>
+    <div class="h2-demo">A Heritage Home in Kannur</div>
+    <div class="h3-demo">Rooms, Gardens &amp; The Forest Beyond</div>
+    <div class="body-demo">Where the forest breathes and old walls hold a hundred stories. Nestled in the quiet of Koovode village, Laxmi Tharavadu is a living heritage home — a place where Kerala's traditions breathe through every carved beam and clay-tiled roof.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Usage Rules</div>
+  <div class="usage-grid">
+    <div class="usage-card">
+      <h4>Display / Hero Headlines</h4>
+      <p>Weight 800 ExtraBold. Use for the brand name, hero text, and large format headlines. May be set in Brand Gold on dark backgrounds or Forest Green on light.</p>
+    </div>
+    <div class="usage-card">
+      <h4>Section Headings (H2, H3)</h4>
+      <p>Weight 700 Bold. Subheadings, section titles, card headlines. Use Forest Green on light backgrounds. Use Cream on dark backgrounds.</p>
+    </div>
+    <div class="usage-card">
+      <h4>Labels &amp; Overlines</h4>
+      <p>Weight 600 SemiBold, uppercase, tracked at 2-3px letter-spacing. Used for category labels, section markers, form field labels, and UI elements.</p>
+    </div>
+    <div class="usage-card">
+      <h4>Body Text</h4>
+      <p>Weight 400 Regular at 15-16px, line-height 1.7-1.8. Use for all descriptive content, paragraph text, and captions. Color: #555 on light, Sage Green on dark.</p>
+    </div>
+    <div class="usage-card">
+      <h4>Scale Reference</h4>
+      <p>H1: 48-64px &nbsp;&middot;&nbsp; H2: 32-40px &nbsp;&middot;&nbsp; H3: 20-28px &nbsp;&middot;&nbsp; H4/Label: 11-14px uppercase &nbsp;&middot;&nbsp; Body: 14-16px &nbsp;&middot;&nbsp; Caption: 12px</p>
+    </div>
+    <div class="usage-card">
+      <h4>Do Not Mix</h4>
+      <p>Baloo 2 is the sole brand typeface. Do not pair it with other display fonts. For long-form editorial content (brochures, long emails), a neutral system serif may supplement body paragraphs only.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Brand Identity System &nbsp;&middot;&nbsp; Confidential
+</footer>
+
+</body>
+</html>

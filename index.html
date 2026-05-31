@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laxmi Tharavadu Heritage Home | Thaliparamba, Kannur, Kerala</title>
+    <meta name="description" content="Experience Kerala's authentic Tharavadu heritage homestay in Thaliparamba, Kannur. A century-old ancestral home nestled in a lush Miyawaki forest.">
+    <meta property="og:title" content="Laxmi Tharavadu Heritage Home">
+    <meta property="og:description" content="Where the forest breathes and old walls hold a hundred stories. Thaliparamba, Kannur, Kerala.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* ─────────────────────────────────────────
+           RESET
+        ───────────────────────────────────────── */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+
+        /* ─────────────────────────────────────────
+           TOKENS
+        ───────────────────────────────────────── */
+        :root {
+            --forest:  #0D1A10;
+            --canopy:  #192C1E;
+            --deep:    #1E3628;
+            --mid:     #2B4D38;
+            --fern:    #4B7859;
+            --sage:    #78A888;
+            --cream:   #F5EFE3;
+            --ivory:   #FAFAF5;
+            --gold:    #F0B800;   /* exact brand gold from logo */
+            --gold-dk: #C49600;   /* darker gold for body use on light bg */
+            --on-dark: #E8F0EA;
+            --muted:   rgba(232,240,234,0.5);
+            --text:    #2A3520;
+            --text-sm: #4E5E48;
+            /* fonts */
+            --brand:   'Baloo 2', sans-serif;
+            --serif:   'Cormorant Garamond', serif;
+            --body:    'Lato', sans-serif;
+        }
+
+        body {
+            font-family: var(--body);
+            font-weight: 300;
+            background: var(--ivory);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ─────────────────────────────────────────
+           NAVIGATION
+        ───────────────────────────────────────── */
+        nav {
+            position: fixed; top:0; left:0; right:0; z-index:200;
+            display: flex; align-items:center; justify-content:space-between;
+            padding: 1.4rem 3.5rem;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(9,16,11,0.97);
+            backdrop-filter: blur(14px);
+            padding: 0.85rem 3.5rem;
+            border-bottom: 1px solid rgba(240,184,0,0.1);
+        }
+        .nav-logo {
+            display: flex; align-items: center;
+            text-decoration: none;
+            height: 40px;
+        }
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .nav-links {
+            display: flex; gap: 2.5rem; list-style:none; align-items:center;
+        }
+        .nav-links a {
+            font-family: var(--brand);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(245,239,227,0.78);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-book {
+            border: 1px solid var(--gold) !important;
+            padding: 0.42rem 1.2rem;
+            color: var(--gold) !important;
+            transition: all 0.3s !important;
+        }
+        .nav-book:hover {
+            background: var(--gold) !important;
+            color: var(--forest) !important;
+        }
+        /* mobile hamburger placeholder */
+        .nav-toggle {
+            display: none;
+            flex-direction: column; gap: 5px; cursor:pointer; padding:4px;
+        }
+        .nav-toggle span {
+            display:block; width:22px; height:1.5px;
+            background: var(--cream); transition: all 0.3s;
+        }
+
+        /* ─────────────────────────────────────────
+           HERO
+        ───────────────────────────────────────── */
+        #hero {
+            height: 100vh; min-height: 560px;
+            position: relative; overflow:hidden;
+            display: flex; align-items:center; justify-content:center;
+        }
+        .hero-bg {
+            position: absolute; inset:0;
+            background:
+                radial-gradient(ellipse at 22% 62%, rgba(35,76,48,0.72) 0%, transparent 52%),
+                linear-gradient(155deg, #070F09 0%, #0F1C12 30%, #152018 60%, #090E0A 100%);
+        }
+        .hero-bg-img {
+            position: absolute; inset:0;
+            background-image: url('assets/images/hero-bg.jpg');
+            background-size: cover; background-position: center;
+            opacity: 0.28;
+        }
+        /* CSS rain — visual only, no button */
+        .rain-layer {
+            position: absolute; inset:0;
+            pointer-events:none; overflow:hidden;
+        }
+        .raindrop {
+            position: absolute; width:1px;
+            background: linear-gradient(transparent, rgba(180,225,205,0.32));
+            animation: fall linear infinite; top:-100px;
+        }
+        @keyframes fall { to { transform: translateY(115vh); } }
+        .mist {
+            position: absolute; inset:0; pointer-events:none;
+            background: radial-gradient(ellipse at 50% 110%, rgba(75,120,89,0.1) 0%, transparent 55%);
+        }
+        .leaf {
+            position: absolute; font-size:1rem;
+            pointer-events:none; opacity:0;
+            animation: leafFall linear infinite;
+        }
+        @keyframes leafFall {
+            0%   { transform:translateY(-20px) rotate(0deg); opacity:0; }
+            8%   { opacity:0.18; }
+            90%  { opacity:0.06; }
+            100% { transform:translateY(115vh) rotate(480deg); opacity:0; }
+        }
+        .hero-content {
+            position:relative; z-index:10;
+            text-align:center; padding: 2rem 1.5rem;
+        }
+        .hero-kicker {
+            font-family: var(--brand);
+            font-weight: 600; font-size: 0.72rem;
+            letter-spacing: 0.42em; text-transform:uppercase;
+            color: var(--gold);
+            opacity:0; animation: fadeUp 1s ease 0.3s forwards;
+            margin-bottom: 1.6rem; display:block;
+        }
+        .hero-title {
+            font-family: var(--brand);
+            font-weight: 800;
+            font-size: clamp(3.2rem, 9.5vw, 8.5rem);
+            line-height: 0.9;
+            color: var(--cream);
+            opacity:0; animation: fadeUp 1s ease 0.55s forwards;
+            margin-bottom: 0.5rem;
+        }
+        .hero-title-line2 {
+            display:block; color: var(--gold);
+        }
+        .hero-sub {
+            font-family: var(--serif);
+            font-size: clamp(0.95rem, 2.2vw, 1.35rem);
+            font-style:italic; font-weight:400;
+            color: var(--muted);
+            margin-bottom: 2.8rem;
+            opacity:0; animation: fadeUp 1s ease 0.78s forwards;
+        }
+        .hero-cta {
+            opacity:0; animation: fadeUp 1s ease 0.95s forwards;
+        }
+        .btn-primary {
+            font-family: var(--brand);
+            font-weight: 700; font-size:0.72rem;
+            letter-spacing: 0.2em; text-transform:uppercase;
+            padding: 1rem 2.8rem;
+            background: var(--gold); color: var(--forest);
+            border:none; cursor:pointer;
+            text-decoration:none; display:inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: #ffc900; transform: translateY(-2px); }
+        .scroll-hint {
+            position:absolute; bottom:2rem; left:50%;
+            transform:translateX(-50%);
+            display:flex; flex-direction:column; align-items:center; gap:0.55rem;
+            color: var(--muted);
+            font-family: var(--brand); font-weight:600;
+            font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+            opacity:0; animation: fadeUp 1s ease 1.3s forwards;
+        }
+        .scroll-line {
+            width:1px; height:42px;
+            background: linear-gradient(to bottom, rgba(245,239,227,0.4), transparent);
+            animation: linePulse 2s ease infinite;
+        }
+        @keyframes linePulse {
+            0%,100% { opacity:0.3; transform:scaleY(1); }
+            50% { opacity:1; transform:scaleY(1.1); }
+        }
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(20px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ─────────────────────────────────────────
+           SHARED
+        ───────────────────────────────────────── */
+        section { padding: 6rem 0; }
+        .container { max-width:1160px; margin:0 auto; padding:0 2.5rem; }
+        .sect-kicker {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.65rem; letter-spacing:0.38em; text-transform:uppercase;
+            color: var(--fern); margin-bottom:0.8rem;
+        }
+        .sect-title {
+            font-family: var(--brand); font-weight:800;
+            font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+            line-height:1.12; color: var(--canopy);
+        }
+        .sect-title em {
+            font-style:normal; color: var(--fern);
+        }
+        .gold-bar {
+            width:36px; height:2px;
+            background: var(--gold); margin: 1.6rem 0;
+        }
+
+        /* ─────────────────────────────────────────
+           STORY
+        ───────────────────────────────────────── */
+        #story { background: var(--ivory); }
+        .story-grid {
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem; align-items:center;
+        }
+        .story-text p {
+            font-family: var(--serif); font-size:1.05rem;
+            line-height:1.95; color: #3A4830;
+            margin-bottom: 1.4rem;
+        }
+        .pull-quote {
+            font-family: var(--serif);
+            font-size:1.5rem; font-style:italic;
+            color: var(--fern); line-height:1.55;
+            border-left:3px solid var(--gold);
+            padding-left: 1.4rem; margin: 2.5rem 0;
+        }
+        .pull-quote cite {
+            display:block; margin-top:0.7rem;
+            font-family: var(--brand); font-weight:600;
+            font-size:0.65rem; letter-spacing:0.15em;
+            text-transform:uppercase; font-style:normal;
+            color: var(--gold-dk);
+        }
+        .story-stats {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:1.5rem; margin-top:2.8rem; padding-top:2.5rem;
+            border-top:1px solid rgba(75,120,89,0.2);
+        }
+        .stat { text-align:center; }
+        .stat-n {
+            font-family: var(--brand); font-weight:800;
+            font-size:2.6rem; color: var(--gold-dk); line-height:1;
+        }
+        .stat-l {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.62rem; letter-spacing:0.18em;
+            text-transform:uppercase; color: var(--fern); margin-top:0.35rem;
+        }
+        .story-img-wrap { position:relative; }
+        .story-img-wrap img {
+            width:100%; height:560px;
+            object-fit:cover; display:block;
+        }
+        .story-img-fallback {
+            width:100%; height:560px;
+            background:linear-gradient(145deg, #152018 0%, #243B2A 50%, #2B4D38 100%);
+        }
+        .story-img-accent {
+            position:absolute; bottom:-1.3rem; left:-1.3rem;
+            width:calc(100% - 2.6rem); height:calc(100% - 2.6rem);
+            border:2px solid var(--gold); z-index:-1;
+        }
+
+        /* ─────────────────────────────────────────
+           ROOMS
+        ───────────────────────────────────────── */
+        #rooms { background:var(--canopy); padding:6rem 0; }
+        #rooms .sect-kicker { color:rgba(240,184,0,0.75); }
+        #rooms .sect-title { color:var(--cream); }
+        #rooms .sect-title em { color:var(--gold); }
+        .rooms-header { text-align:center; margin-bottom:3.5rem; }
+        .rooms-sub {
+            font-family: var(--serif); font-style:italic;
+            color:rgba(245,239,227,0.5); font-size:1rem;
+            max-width:480px; margin:1.2rem auto 0; line-height:1.75;
+        }
+        .rooms-grid {
+            display:grid; grid-template-columns:repeat(2,1fr); gap:3px;
+        }
+        .room-card {
+            position:relative; overflow:hidden; height:420px; cursor:pointer;
+        }
+        .room-img {
+            width:100%; height:100%;
+            background-size:cover; background-position:center;
+            transition:transform 0.7s ease;
+        }
+        .room-card:hover .room-img { transform:scale(1.06); }
+        .room-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(to top, rgba(7,13,9,0.95) 0%, rgba(7,13,9,0.3) 55%, transparent 100%);
+            transition:background 0.4s;
+        }
+        .room-card:hover .room-overlay {
+            background:linear-gradient(to top, rgba(7,13,9,0.98) 0%, rgba(7,13,9,0.58) 65%, rgba(7,13,9,0.05) 100%);
+        }
+        .room-info {
+            position:absolute; bottom:0; left:0; right:0;
+            padding:2rem; color:var(--cream);
+        }
+        .room-tag {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.6rem; letter-spacing:0.28em;
+            text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem;
+        }
+        .room-name {
+            font-family: var(--brand); font-weight:800;
+            font-size:1.55rem; margin-bottom:0.35rem;
+        }
+        .room-price {
+            font-family: var(--serif); font-size:0.9rem;
+            color:rgba(245,239,227,0.6);
+        }
+        .room-price strong { color:var(--gold); font-size:1.05rem; }
+        .room-expand {
+            max-height:0; overflow:hidden;
+            transition:max-height 0.45s ease, margin 0.45s;
+        }
+        .room-card:hover .room-expand { max-height:150px; margin-top:1rem; }
+        .room-chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.9rem; }
+        .chip {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase;
+            background:rgba(245,239,227,0.07);
+            border:1px solid rgba(245,239,227,0.17);
+            padding:0.2rem 0.55rem; color:rgba(245,239,227,0.72);
+        }
+        .room-link {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.64rem; letter-spacing:0.14em; text-transform:uppercase;
+            color:var(--gold); text-decoration:none;
+            border-bottom:1px solid rgba(240,184,0,0.3);
+            padding-bottom:2px; transition:border-color 0.3s;
+        }
+        .room-link:hover { border-color:var(--gold); }
+        .rooms-note {
+            text-align:center; margin-top:2.5rem;
+            font-family: var(--serif); font-style:italic;
+            color:rgba(245,239,227,0.4); font-size:0.9rem;
+        }
+        .rooms-note a { color:var(--gold); text-decoration:none; }
+
+        /* ─────────────────────────────────────────
+           EXPERIENCE
+        ───────────────────────────────────────── */
+        #experience { background:var(--ivory); }
+        .exp-header { text-align:center; margin-bottom:4.5rem; }
+        .exp-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem;
+        }
+        .exp-card { padding:2rem 1.5rem 2rem; border-top:1px solid rgba(75,120,89,0.18); }
+        .exp-num {
+            font-family: var(--brand); font-weight:800;
+            font-size:0.65rem; letter-spacing:0.28em; color:var(--gold-dk);
+            margin-bottom:1.1rem; display:block;
+        }
+        .exp-name {
+            font-family: var(--brand); font-weight:800;
+            font-size:1.15rem; color:var(--canopy); margin-bottom:0.8rem;
+        }
+        .exp-desc {
+            font-family: var(--serif); font-size:1rem;
+            line-height:1.85; color:var(--text-sm);
+        }
+
+        /* ─────────────────────────────────────────
+           GALLERY
+        ───────────────────────────────────────── */
+        #gallery { background:var(--forest); padding:6rem 0; }
+        #gallery .sect-kicker { color:rgba(240,184,0,0.75); }
+        #gallery .sect-title { color:var(--cream); }
+        #gallery .sect-title em { color:var(--gold); }
+        .gallery-header { text-align:center; margin-bottom:3rem; }
+        .gallery-grid {
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr;
+            grid-template-rows:300px 240px;
+            gap:3px;
+        }
+        .g-item {
+            overflow:hidden; background:var(--deep);
+            position:relative;
+        }
+        .g-item:first-child { grid-row:1/3; }
+        .g-item img {
+            width:100%; height:100%;
+            object-fit:cover; display:block;
+            transition:transform 0.65s ease;
+        }
+        .g-item:hover img { transform:scale(1.05); }
+        .gallery-cta {
+            text-align:center; margin-top:2.5rem;
+            font-family: var(--brand); font-weight:600;
+            font-size:0.7rem; letter-spacing:0.22em;
+        }
+        .gallery-cta a {
+            color:rgba(245,239,227,0.5); text-decoration:none;
+            border-bottom:1px solid rgba(245,239,227,0.18);
+            padding-bottom:3px; text-transform:uppercase;
+            transition:color 0.3s, border-color 0.3s;
+        }
+        .gallery-cta a:hover { color:var(--gold); border-color:var(--gold); }
+
+        /* ─────────────────────────────────────────
+           TESTIMONIALS
+        ───────────────────────────────────────── */
+        #testimonials { background:var(--cream); }
+        .testi-header { text-align:center; margin-bottom:3.5rem; }
+        .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+        .testi-card {
+            background:var(--ivory); padding:2.5rem;
+            border-top:3px solid var(--fern);
+        }
+        .testi-mark {
+            font-family: var(--serif); font-size:4rem; line-height:0.4;
+            color:var(--fern); opacity:0.22; margin-bottom:0.7rem;
+        }
+        .testi-stars {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.7rem; letter-spacing:0.12em;
+            color:var(--gold-dk); margin-bottom:0.6rem;
+        }
+        .testi-text {
+            font-family: var(--serif);
+            font-size:1.03rem; font-style:italic;
+            line-height:1.85; color:#3A4A36; margin-bottom:1.4rem;
+        }
+        .testi-by {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.65rem; letter-spacing:0.12em;
+            text-transform:uppercase; color:var(--fern);
+        }
+
+        /* ─────────────────────────────────────────
+           SURROUNDINGS
+        ───────────────────────────────────────── */
+        #surroundings { background:var(--deep); padding:6rem 0; }
+        #surroundings .sect-kicker { color:var(--gold); }
+        #surroundings .sect-title { color:var(--cream); }
+        #surroundings .sect-title em { color:var(--sage); }
+        .surr-grid {
+            display:grid; grid-template-columns:1fr 1fr;
+            gap:5rem; align-items:start;
+        }
+        .surr-intro p {
+            font-family: var(--serif); font-size:1rem;
+            line-height:1.9; color:rgba(245,239,227,0.6);
+            margin-top:1.6rem;
+        }
+        .attr-list { list-style:none; margin-top:2.5rem; }
+        .attr-list li {
+            display:flex; align-items:flex-start; gap:1.2rem;
+            padding:1rem 0;
+            border-bottom:1px solid rgba(245,239,227,0.06);
+        }
+        .attr-marker {
+            width:6px; height:6px; border-radius:50%;
+            background:var(--gold); flex-shrink:0; margin-top:7px;
+        }
+        .attr-n {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.95rem; color:var(--cream);
+        }
+        .attr-d {
+            font-family: var(--serif); font-style:italic;
+            font-size:0.78rem; color:rgba(240,184,0,0.7); margin-top:0.12rem;
+        }
+
+        /* ─────────────────────────────────────────
+           FAQ
+        ───────────────────────────────────────── */
+        #faq { background:var(--ivory); }
+        .faq-header { text-align:center; margin-bottom:3.5rem; }
+        .faq-cols {
+            display:grid; grid-template-columns:1fr 1fr;
+            gap:0 3rem; max-width:1000px; margin:0 auto;
+        }
+        .faq-item { border-bottom:1px solid rgba(75,120,89,0.16); }
+        .faq-q {
+            display:flex; justify-content:space-between; align-items:flex-start;
+            gap:1rem; padding:1.3rem 0;
+            cursor:pointer;
+            font-family: var(--brand); font-weight:700;
+            font-size:0.95rem; color:var(--canopy);
+            user-select:none; transition:color 0.3s;
+        }
+        .faq-q:hover { color:var(--fern); }
+        .faq-arrow {
+            font-family: var(--brand); font-weight:800;
+            font-size:0.65rem; flex-shrink:0; margin-top:3px;
+            color:var(--gold-dk); transition:transform 0.3s;
+        }
+        .faq-item.open .faq-arrow { transform:rotate(180deg); }
+        .faq-a {
+            max-height:0; overflow:hidden;
+            transition:max-height 0.4s ease, padding 0.4s;
+        }
+        .faq-item.open .faq-a { max-height:280px; padding-bottom:1.2rem; }
+        .faq-a p {
+            font-family: var(--serif); font-size:0.97rem;
+            line-height:1.85; color:var(--text-sm);
+        }
+
+        /* ─────────────────────────────────────────
+           BOOK
+        ───────────────────────────────────────── */
+        #book { background:var(--canopy); padding:6rem 0; text-align:center; }
+        #book .sect-kicker { color:var(--gold); }
+        #book .sect-title { color:var(--cream); }
+        #book .sect-title em { color:var(--gold); }
+        .book-sub {
+            font-family: var(--serif); font-style:italic;
+            color:rgba(245,239,227,0.52); font-size:1rem;
+            max-width:500px; margin:1.2rem auto 3.5rem; line-height:1.8;
+        }
+        .book-options {
+            display:flex; gap:1.2rem; justify-content:center;
+            flex-wrap:wrap; margin-bottom:4rem;
+        }
+        .book-opt {
+            padding:1.5rem 2.2rem; min-width:140px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(245,239,227,0.1);
+            text-decoration:none; transition:all 0.3s;
+            display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+        }
+        .book-opt:hover {
+            background:rgba(255,255,255,0.09);
+            border-color:var(--gold); transform:translateY(-3px);
+        }
+        .book-opt-name {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.68rem; letter-spacing:0.2em;
+            text-transform:uppercase; color:var(--cream);
+        }
+        .book-opt-desc {
+            font-family: var(--serif); font-style:italic;
+            font-size:0.78rem; color:rgba(245,239,227,0.35);
+        }
+        .contact-row {
+            padding-top:3rem;
+            border-top:1px solid rgba(245,239,227,0.07);
+            display:flex; justify-content:center;
+            gap:4rem; flex-wrap:wrap;
+        }
+        .c-item { text-align:center; }
+        .c-lbl {
+            font-family: var(--brand); font-weight:700;
+            font-size:0.6rem; letter-spacing:0.28em;
+            text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;
+        }
+        .c-val {
+            font-family: var(--serif); font-size:1.1rem; color:var(--cream);
+        }
+        .c-val a { color:var(--cream); text-decoration:none; transition:color 0.3s; }
+        .c-val a:hover { color:var(--gold); }
+
+        /* ─────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────── */
+        footer { background:var(--forest); padding:3rem 0; text-align:center; }
+        .foot-logo { display:inline-block; margin-bottom:0.8rem; }
+        .foot-logo img { height:36px; width:auto; opacity:0.85; }
+        .foot-sub {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase;
+            color:rgba(245,239,227,0.3); margin-bottom:2rem;
+        }
+        .foot-links {
+            display:flex; gap:2rem; justify-content:center;
+            list-style:none; margin-bottom:2rem; flex-wrap:wrap;
+        }
+        .foot-links a {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;
+            color:rgba(245,239,227,0.35); text-decoration:none; transition:color 0.3s;
+        }
+        .foot-links a:hover { color:var(--gold); }
+        .foot-copy {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.6rem; color:rgba(245,239,227,0.18);
+        }
+
+        /* ─────────────────────────────────────────
+           WHATSAPP FAB
+        ───────────────────────────────────────── */
+        .wa-fab {
+            position:fixed; bottom:1.8rem; right:1.8rem; z-index:300;
+            width:52px; height:52px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            text-decoration:none;
+            box-shadow:0 4px 18px rgba(37,211,102,0.38);
+            transition:transform 0.3s, box-shadow 0.3s;
+            animation:waPulse 3s ease infinite;
+        }
+        .wa-fab:hover { transform:scale(1.08); box-shadow:0 6px 24px rgba(37,211,102,0.58); }
+        .wa-fab img, .wa-fab svg { width:52px; height:52px; border-radius:50%; display:block; }
+        @keyframes waPulse {
+            0%,100% { box-shadow:0 4px 18px rgba(37,211,102,0.38); }
+            50% { box-shadow:0 4px 28px rgba(37,211,102,0.62); }
+        }
+
+        /* ─────────────────────────────────────────
+           CHATBOT
+        ───────────────────────────────────────── */
+        .chat-fab {
+            position:fixed; bottom:1.8rem; right:6rem; z-index:300;
+            width:52px; height:52px; border-radius:50%;
+            background:var(--canopy);
+            border:1px solid rgba(240,184,0,0.32);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,0.45);
+            transition:all 0.3s;
+        }
+        .chat-fab:hover { border-color:var(--gold); transform:scale(1.05); }
+        .chat-fab svg { width:22px; height:22px; }
+        .chat-window {
+            position:fixed; bottom:5.8rem; right:1.8rem; z-index:300;
+            width:330px; max-height:460px;
+            background:var(--ivory);
+            border:1px solid rgba(240,184,0,0.18);
+            box-shadow:0 18px 55px rgba(0,0,0,0.32);
+            display:flex; flex-direction:column; overflow:hidden;
+            opacity:0; pointer-events:none;
+            transform:translateY(10px);
+            transition:opacity 0.3s, transform 0.3s;
+        }
+        .chat-window.open { opacity:1; pointer-events:all; transform:translateY(0); }
+        .chat-header {
+            background:var(--canopy); padding:1rem 1.3rem;
+            display:flex; align-items:center; gap:0.8rem;
+            border-bottom:1px solid rgba(240,184,0,0.12);
+        }
+        .chat-avatar {
+            width:34px; height:34px;
+            background:var(--gold); border-radius:50%;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .chat-avatar svg { width:18px; height:18px; }
+        .chat-name {
+            font-family: var(--brand); font-weight:800;
+            font-size:0.9rem; color:var(--cream);
+        }
+        .chat-status {
+            font-family: var(--serif); font-style:italic;
+            font-size:0.7rem; color:rgba(245,239,227,0.4); margin-top:1px;
+        }
+        .chat-x {
+            margin-left:auto; background:none; border:none;
+            font-family: var(--brand); font-weight:600;
+            font-size:0.9rem; color:rgba(245,239,227,0.4);
+            cursor:pointer; padding:0.2rem; transition:color 0.2s;
+        }
+        .chat-x:hover { color:var(--cream); }
+        .chat-msgs {
+            flex:1; overflow-y:auto; padding:1rem;
+            display:flex; flex-direction:column; gap:0.7rem;
+            background:#EDE9E0;
+        }
+        .chat-msgs::-webkit-scrollbar { width:3px; }
+        .chat-msgs::-webkit-scrollbar-thumb { background:rgba(75,120,89,0.3); border-radius:2px; }
+        .msg {
+            max-width:85%; padding:0.65rem 0.95rem;
+            border-radius:0 8px 8px 8px;
+            font-family: var(--serif); font-size:0.9rem;
+            line-height:1.6; color:var(--text);
+            background:var(--ivory);
+            box-shadow:0 1px 3px rgba(0,0,0,0.07);
+        }
+        .msg.user {
+            align-self:flex-end; background:var(--mid);
+            color:var(--on-dark); border-radius:8px 0 8px 8px;
+        }
+        .msg.bot { align-self:flex-start; }
+        .msg-suggs { display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem; }
+        .sugg-btn {
+            font-family: var(--brand); font-weight:600;
+            font-size:0.65rem; padding:0.25rem 0.65rem;
+            background:none; border:1px solid rgba(75,120,89,0.38);
+            color:var(--fern); border-radius:20px; cursor:pointer;
+            transition:all 0.2s;
+        }
+        .sugg-btn:hover { background:var(--fern); color:var(--ivory); }
+        .chat-input-row {
+            display:flex; gap:0.5rem; padding:0.75rem 1rem;
+            border-top:1px solid rgba(240,184,0,0.12);
+            background:var(--ivory);
+        }
+        .chat-input {
+            flex:1; padding:0.5rem 0.85rem;
+            border:1px solid rgba(75,120,89,0.22);
+            background:#F5F2EB; outline:none;
+            font-family: var(--serif); font-size:0.88rem;
+            transition:border-color 0.2s;
+        }
+        .chat-input:focus { border-color:var(--fern); }
+        .chat-send {
+            background:var(--gold); border:none;
+            width:36px; height:36px;
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; flex-shrink:0;
+            transition:background 0.2s;
+        }
+        .chat-send:hover { background:#ffc900; }
+        .chat-send svg { width:14px; height:14px; }
+
+        /* ─────────────────────────────────────────
+           REVEAL ANIMATIONS
+        ───────────────────────────────────────── */
+        .reveal, .reveal-l, .reveal-r {
+            opacity:0; transition:opacity 0.85s ease, transform 0.85s ease;
+        }
+        .reveal   { transform:translateY(24px); }
+        .reveal-l { transform:translateX(-24px); }
+        .reveal-r { transform:translateX(24px); }
+        .reveal.on, .reveal-l.on, .reveal-r.on { opacity:1; transform:none; }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE — TABLET (max 960px)
+        ───────────────────────────────────────── */
+        @media (max-width: 960px) {
+            nav { padding:1rem 1.5rem; }
+            nav.scrolled { padding:0.7rem 1.5rem; }
+            .nav-links { display:none; }
+            .nav-toggle { display:flex; }
+            /* mobile nav overlay */
+            .nav-links.open {
+                display:flex; flex-direction:column; gap:0;
+                position:fixed; top:0; left:0; right:0; bottom:0;
+                background:rgba(9,16,11,0.98);
+                align-items:center; justify-content:center;
+                z-index:190;
+            }
+            .nav-links.open li { padding:1rem 0; border-bottom:1px solid rgba(245,239,227,0.06); width:200px; text-align:center; }
+            .nav-links.open a { font-size:1rem; letter-spacing:0.18em; }
+
+            section { padding:4rem 0; }
+
+            .story-grid { grid-template-columns:1fr; gap:2.5rem; }
+            .story-img-wrap img { height:360px; }
+            .story-img-fallback { height:360px; }
+            .story-img-accent { display:none; }
+
+            .rooms-grid { grid-template-columns:1fr; }
+            .room-card { height:340px; }
+
+            .exp-grid { grid-template-columns:1fr 1fr; gap:0; }
+            .exp-card { padding:1.5rem 1.2rem; }
+
+            .gallery-grid {
+                grid-template-columns:1fr 1fr;
+                grid-template-rows:repeat(3, 200px);
+            }
+            .g-item:first-child { grid-row:auto; }
+
+            .testi-grid { grid-template-columns:1fr; gap:1.2rem; }
+
+            .surr-grid { grid-template-columns:1fr; gap:2.5rem; }
+
+            .faq-cols { grid-template-columns:1fr; }
+
+            .contact-row { gap:2rem; }
+
+            .chat-window { right:1rem; width:calc(100vw - 2rem); max-width:360px; }
+            .wa-fab { bottom:1.2rem; right:1.2rem; }
+            .chat-fab { bottom:1.2rem; right:5.2rem; }
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE — MOBILE (max 600px)
+        ───────────────────────────────────────── */
+        @media (max-width: 600px) {
+            section { padding:3.5rem 0; }
+            .container { padding:0 1.4rem; }
+
+            #hero { min-height:100svh; }
+            .hero-title { font-size:3rem; line-height:0.92; }
+            .hero-sub { font-size:0.92rem; margin-bottom:2rem; }
+            .hero-kicker { font-size:0.62rem; letter-spacing:0.3em; }
+
+            .story-grid { gap:2rem; }
+            .story-img-wrap img { height:280px; }
+            .story-img-fallback { height:280px; }
+            .story-stats { grid-template-columns:repeat(3,1fr); gap:0.5rem; }
+            .stat-n { font-size:2rem; }
+
+            .rooms-grid { gap:2px; }
+            .room-card { height:300px; }
+            .room-name { font-size:1.3rem; }
+
+            .exp-grid { grid-template-columns:1fr; gap:0; }
+
+            .gallery-grid {
+                grid-template-columns:1fr 1fr;
+                grid-template-rows:repeat(3, 160px);
+            }
+
+            .testi-card { padding:1.8rem; }
+
+            .book-options { flex-direction:column; align-items:center; }
+            .book-opt { width:200px; }
+
+            .contact-row { flex-direction:column; gap:1.8rem; }
+
+            .rooms-header, .gallery-header, .testi-header,
+            .exp-header, .faq-header { margin-bottom:2.5rem; }
+
+            .surr-grid { gap:2rem; }
+
+            nav { padding:0.85rem 1.2rem; }
+            .nav-logo img { height:32px; }
+
+            .wa-fab, .wa-fab img, .wa-fab svg { width:46px; height:46px; }
+            .chat-fab { width:46px; height:46px; right:4.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     NAVIGATION
+═══════════════════════════════ -->
+<nav id="nav">
+    <a href="#hero" class="nav-logo">
+        <img src="assets/images/logo-white.png" alt="Laxmi Tharavadu" loading="eager">
+    </a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#story" onclick="closeNav()">Our Story</a></li>
+        <li><a href="#rooms" onclick="closeNav()">Rooms</a></li>
+        <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+        <li><a href="#gallery" onclick="closeNav()">Gallery</a></li>
+        <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
+        <li><a href="#book" class="nav-book" onclick="closeNav()">Book Now</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════
+     HERO
+═══════════════════════════════ -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-img"></div>
+    <div class="rain-layer" id="rainLayer"></div>
+    <div class="mist"></div>
+
+    <div class="hero-content">
+        <span class="hero-kicker">Koovode &middot; Thaliparamba &middot; Kannur, Kerala</span>
+        <h1 class="hero-title">
+            Laxmi<br>
+            <span class="hero-title-line2">Tharavadu</span>
+        </h1>
+        <p class="hero-sub">Where the forest breathes and old walls hold a hundred stories</p>
+        <div class="hero-cta">
+            <a href="#book" class="btn-primary">Plan Your Stay</a>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>Discover</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     STORY
+═══════════════════════════════ -->
+<section id="story">
+    <div class="container">
+        <div class="story-grid">
+            <div class="reveal-l">
+                <p class="sect-kicker">Our Heritage</p>
+                <h2 class="sect-title">A House with a<br><em>Hundred Years of Stories</em></h2>
+                <div class="gold-bar"></div>
+                <p>Long before it welcomed guests, Laxmi Tharavadu was simply home — a traditional Kerala Tharavadu built in the 1920s, where a family of nine lived beneath these same rafters. The carved wooden beams, the central nadumuttam with its lotus pond, the oonjal swinging in the breeze — none of it was built for aesthetics. It was built for life.</p>
+                <div class="pull-quote">
+                    "It's not about luxury, but about calmness and simplicity."
+                    <cite>A guest who found her peace here</cite>
+                </div>
+                <p>Today, that life is yours to borrow. Set amidst a deliberately cultivated Miyawaki forest — a dense, biodiverse native woodland that draws birds and butterflies from across North Kerala — Laxmi is genuinely quiet in a way most places only promise. A Naga temple at the property's edge, organic paddy nearby, and a caretaker who knows every corner. This is Laxmi Tharavadu: unhurried, unhidden, entirely itself.</p>
+                <div class="story-stats">
+                    <div class="stat">
+                        <div class="stat-n">~100</div>
+                        <div class="stat-l">Years Old</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-n">4</div>
+                        <div class="stat-l">Private Rooms</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-n">4.5&#9733;</div>
+                        <div class="stat-l">Google Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-img-wrap reveal-r">
+                <img
+                    src="assets/images/story.jpg"
+                    alt="Laxmi Tharavadu Heritage Home — the courtyard"
+                    onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/aefd784d-f1d5-47dc-aab6-001ce35450fa.jpeg'">
+                <div class="story-img-accent"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     ROOMS
+═══════════════════════════════ -->
+<section id="rooms">
+    <div class="container">
+        <div class="rooms-header">
+            <p class="sect-kicker">Where You Sleep</p>
+            <h2 class="sect-title" style="color:var(--cream);">Four Rooms, <em>One Soul</em></h2>
+            <p class="rooms-sub">Each room carries the character of the house it belongs to. Queen beds, private bathrooms, complimentary breakfast — and real stillness.</p>
+        </div>
+    </div>
+    <div class="rooms-grid">
+
+        <div class="room-card">
+            <div class="room-img" id="rm1" style="background-color:#1A3A24;"></div>
+            <div class="room-overlay"></div>
+            <div class="room-info">
+                <p class="room-tag">Ground Floor &middot; Patio Access</p>
+                <h3 class="room-name">The Patio Room</h3>
+                <p class="room-price">from <strong>&#8377;2,151</strong> / night</p>
+                <div class="room-expand">
+                    <div class="room-chips">
+                        <span class="chip">Queen Bed</span>
+                        <span class="chip">Attached Bath</span>
+                        <span class="chip">Garden View</span>
+                        <span class="chip">Private Patio</span>
+                    </div>
+                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Patio%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <div class="room-img" id="rm2" style="background-color:#243B2A;"></div>
+            <div class="room-overlay"></div>
+            <div class="room-info">
+                <p class="room-tag">Heritage Block &middot; Courtyard</p>
+                <h3 class="room-name">The Nadumuttam Room</h3>
+                <p class="room-price">from <strong>&#8377;2,151</strong> / night</p>
+                <div class="room-expand">
+                    <div class="room-chips">
+                        <span class="chip">Queen Bed</span>
+                        <span class="chip">Hot Water</span>
+                        <span class="chip">Courtyard View</span>
+                        <span class="chip">Heritage Block</span>
+                    </div>
+                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Nadumuttam%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <div class="room-img" id="rm3" style="background-color:#1E3A28;"></div>
+            <div class="room-overlay"></div>
+            <div class="room-info">
+                <p class="room-tag">Upper Floor &middot; Heritage Block</p>
+                <h3 class="room-name">The Attic Room</h3>
+                <p class="room-price">from <strong>&#8377;2,151</strong> / night</p>
+                <div class="room-expand">
+                    <div class="room-chips">
+                        <span class="chip">Queen Bed</span>
+                        <span class="chip">Hot Water</span>
+                        <span class="chip">Garden View</span>
+                        <span class="chip">Upper Level</span>
+                    </div>
+                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Attic%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <div class="room-img" id="rm4" style="background-color:#162A1A;"></div>
+            <div class="room-overlay"></div>
+            <div class="room-info">
+                <p class="room-tag">Garden Wing &middot; Independent</p>
+                <h3 class="room-name">The Garden Room</h3>
+                <p class="room-price">from <strong>&#8377;2,000</strong> / night</p>
+                <div class="room-expand">
+                    <div class="room-chips">
+                        <span class="chip">Queen Bed</span>
+                        <span class="chip">Max 3 Guests</span>
+                        <span class="chip">Kitchenette</span>
+                        <span class="chip">Garden Wing</span>
+                    </div>
+                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Garden%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <p class="rooms-note">Entire home available for private bookings up to 14 guests. <a href="https://wa.me/919744603000">Contact us</a> for group rates.</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     EXPERIENCE
+═══════════════════════════════ -->
+<section id="experience">
+    <div class="container">
+        <div class="exp-header">
+            <p class="sect-kicker">Life at Laxmi</p>
+            <h2 class="sect-title">The Things You'll<br><em>Actually Remember</em></h2>
+        </div>
+        <div class="exp-grid">
+            <div class="exp-card reveal">
+                <span class="exp-num">01</span>
+                <h3 class="exp-name">The Miyawaki Forest</h3>
+                <p class="exp-desc">The grounds are planted using the Miyawaki method — dense, native woodland that grows fast and thick, drawing birds and wildlife unique to North Kerala. Walk through it in the morning mist and you understand why guests stop checking their phones.</p>
+            </div>
+            <div class="exp-card reveal" style="transition-delay:0.12s">
+                <span class="exp-num">02</span>
+                <h3 class="exp-name">The Nadumuttam</h3>
+                <p class="exp-desc">The central courtyard — soul of every Tharavadu. At Laxmi, a lotus pond sits at its heart. Sit by it in the afternoon. Photographers and content creators already know what this space does to a frame and to a person.</p>
+            </div>
+            <div class="exp-card reveal" style="transition-delay:0.24s">
+                <span class="exp-num">03</span>
+                <h3 class="exp-name">Bonfire Evenings</h3>
+                <p class="exp-desc">The garden comes alive after sundown. A bonfire, a BBQ if you like, and the kind of conversation that only happens when there's nothing else asking for your attention.</p>
+            </div>
+            <div class="exp-card reveal" style="transition-delay:0.08s">
+                <span class="exp-num">04</span>
+                <h3 class="exp-name">Photography Shoots</h3>
+                <p class="exp-desc">Pre-wedding shoots, reels, brand campaigns — Laxmi has become one of Kannur's most-sought backdrops. The oonjal, carved beams, lotus pond. It photographs like it was built for it. In a way, it was.</p>
+            </div>
+            <div class="exp-card reveal" style="transition-delay:0.2s">
+                <span class="exp-num">05</span>
+                <h3 class="exp-name">Morning Bird Chorus</h3>
+                <p class="exp-desc">Guests consistently mention the birds — not as an afterthought but as a highlight. The Miyawaki forest draws species most of Kerala doesn't hear anymore. Your mornings here will sound different.</p>
+            </div>
+            <div class="exp-card reveal" style="transition-delay:0.32s">
+                <span class="exp-num">06</span>
+                <h3 class="exp-name">Kerala on the Plate</h3>
+                <p class="exp-desc">Breakfast is included. Beyond that, the shared kitchen is yours. Our caretaker can source fresh local groceries and arrange Kerala-style meals — the way a home, not a hotel, feeds you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     GALLERY
+═══════════════════════════════ -->
+<section id="gallery">
+    <div class="container">
+        <div class="gallery-header">
+            <p class="sect-kicker">Through the Lens</p>
+            <h2 class="sect-title">A Place That <em>Photographs Itself</em></h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="g-item">
+                <img src="assets/images/gallery-1.jpg" alt="Laxmi Tharavadu"
+                     onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/382c78d2-9d6c-4f6e-9bb6-99f92f1cea84.jpeg'">
+            </div>
+            <div class="g-item">
+                <img src="assets/images/gallery-2.jpg" alt="The Courtyard"
+                     onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/aefd784d-f1d5-47dc-aab6-001ce35450fa.jpeg'">
+            </div>
+            <div class="g-item">
+                <img src="assets/images/gallery-3.jpg" alt="Heritage Interior"
+                     onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/1dcd231d-b026-4c4f-a230-b532246fda10.jpeg'">
+            </div>
+            <div class="g-item">
+                <img src="assets/images/gallery-4.jpg" alt="Garden Room"
+                     onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/d64efb9d-6459-4aa0-bfac-065f342c79c8.jpeg'">
+            </div>
+            <div class="g-item">
+                <img src="assets/images/gallery-5.jpg" alt="The Garden"
+                     onerror="this.src='https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/2e199895-0071-496d-a9b1-6ca4a275b161.jpeg'">
+            </div>
+        </div>
+        <div class="gallery-cta">
+            <a href="https://www.instagram.com/tharavadu__laxmi/" target="_blank">
+                Instagram &mdash; @tharavadu__laxmi
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════ -->
+<section id="testimonials">
+    <div class="container">
+        <div class="testi-header">
+            <p class="sect-kicker">What Guests Say</p>
+            <h2 class="sect-title">Words from <em>Those Who Stayed</em></h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card reveal">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">The traditional Kerala architecture, serene surroundings, and warm hospitality made it unforgettable. Highly recommend for a peaceful and authentic experience.</p>
+                <p class="testi-by">Bhuvana Girish &mdash; Friends Trip</p>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.15s">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">The swing, the nadumuttam with the lotus pond in the middle, the old architecture — just was spot on. We loved the vibe and the authentic traditional backdrop.</p>
+                <p class="testi-by">Shimna Mayimi &mdash; Video Shoot</p>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.3s">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">Aesthetically pleasing with a very serene atmosphere. Close to city but far enough to be absolutely peaceful. We sat on the veranda all evening.</p>
+                <p class="testi-by">Sumit Kumar &mdash; Couple's Stay</p>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.1s">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">Mornings and evenings are especially charming with so many birds and their chirping. The architecture of this ancestral house oozes serenity and peace.</p>
+                <p class="testi-by">Suvoluxmi Sircar &mdash; Solo Stay</p>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.25s">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">A quiet and relaxing homestay away from the crowd. Those who yearn for engaging in creative writing will really love this place.</p>
+                <p class="testi-by">Sreerekha N &mdash; Friends Trip</p>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:0.4s">
+                <div class="testi-mark">&ldquo;</div>
+                <div class="testi-stars">&#9733; &#9733; &#9733; &#9733;</div>
+                <p class="testi-text">Slow mornings, heritage corners, peaceful vibes and the warmth of Kerala. If you're ever visiting Kannur and want to experience a calm traditional Kerala stay, this place deserves to be on your list.</p>
+                <p class="testi-by">@kour.__.mann &mdash; Content Creator</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SURROUNDINGS
+═══════════════════════════════ -->
+<section id="surroundings">
+    <div class="container">
+        <div class="surr-grid">
+            <div class="reveal-l">
+                <p class="sect-kicker">Around Laxmi</p>
+                <h2 class="sect-title">Kannur at<br><em>Your Doorstep</em></h2>
+                <div class="gold-bar"></div>
+                <p>Laxmi Tharavadu sits closer to most of Kannur's gems than the city itself does. Ancient temples, misty hill stations, Theyyam — North Kerala's living ritual art — and quiet beaches are all within a short drive.</p>
+            </div>
+            <div class="reveal-r">
+                <ul class="attr-list">
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Sri Rajarajeshwara Temple</div><div class="attr-d">5.4 km &middot; Taliparamba</div></div>
+                    </li>
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Parassinikadavu Muthappan Temple</div><div class="attr-d">9.1 km &middot; Sacred pilgrimage site</div></div>
+                    </li>
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Theyyam Dance Performances</div><div class="attr-d">Kannur district &middot; Seasonal ritual art</div></div>
+                    </li>
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Paithalmala Hill Station</div><div class="attr-d">~20 km &middot; Trekking, mist, panoramic views</div></div>
+                    </li>
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Chootad Beach</div><div class="attr-d">Within 20 km &middot; Quiet, unspoiled</div></div>
+                    </li>
+                    <li>
+                        <div class="attr-marker"></div>
+                        <div><div class="attr-n">Vellikkeel Eco Park</div><div class="attr-d">Within 20 km &middot; Nature trails</div></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FAQ
+═══════════════════════════════ -->
+<section id="faq">
+    <div class="container">
+        <div class="faq-header">
+            <p class="sect-kicker">Frequently Asked</p>
+            <h2 class="sect-title">Before You <em>Pack Your Bags</em></h2>
+        </div>
+        <div class="faq-cols">
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">How many rooms are there?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>We have 4 rooms — The Patio Room, The Nadumuttam Room, and The Attic Room in the traditional heritage block, and The Garden Room in a separate garden wing. Each has a queen bed and a private attached bathroom.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Is breakfast included?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Yes, complimentary breakfast is included with every booking. We serve Kerala-style or English breakfast. Lunch and dinner can be arranged at approximately &#8377;180 per person — just let us know when you book.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Is the property air-conditioned?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>The rooms are not air-conditioned. The dense Miyawaki forest surrounding the property provides natural cooling most guests find very comfortable. Each room has a ceiling fan and standing fan.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Are pets allowed?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Yes — Laxmi Tharavadu is proudly pet-friendly. Furry companions are very welcome. The garden and open grounds give them plenty of space to explore.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">What are check-in and check-out times?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Check-in is at 12:00 PM and check-out is at 11:00 AM. If you need early check-in or late check-out, reach us on WhatsApp and we will do our best to accommodate.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Can I book the whole property?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Yes. The entire home can be booked privately for up to 14 guests — ideal for family stays, friend trips, and celebrations. Contact us on WhatsApp at +91 97446 03000 for group rates.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Is WiFi available?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Yes, complimentary WiFi is available throughout the property. Though honestly, once you are here, most guests find themselves using it rather less than usual.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">How far is the nearest airport and railway?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Kannur International Airport (CNN) is approximately 40 km away. Kannapuram Railway Station is 8.5 km away. We can arrange pickup and drop — just ask when booking.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Is it suitable for photography shoots?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>It is one of Kannur's most sought-after locations for photography. The lotus pond courtyard, the oonjal, carved heritage beams, and the lush garden create frames very hard to manufacture elsewhere. Contact us in advance to plan your dates.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">What is a Tharavadu?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>A Tharavadu is a traditional Kerala ancestral home, passed down through generations. Laxmi Tharavadu was built in the 1920s and once housed a family of nine. The original architecture — central nadumuttam with lotus pond, carved wooden pillars, and the oonjal — is preserved.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Is parking available?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Yes, free onsite parking is available for up to 3 cars.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">What is the cancellation policy?<span class="faq-arrow">&#9660;</span></div>
+                <div class="faq-a"><p>Free cancellation is available until 11:59 AM the day before check-in for direct bookings. For Airbnb and MakeMyTrip bookings, their respective platform policies apply.</p></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     BOOK
+═══════════════════════════════ -->
+<section id="book">
+    <div class="container">
+        <p class="sect-kicker">Reserve Your Stay</p>
+        <h2 class="sect-title">Come Home to <em>Laxmi</em></h2>
+        <p class="book-sub">Book directly on WhatsApp for the most personal experience. Or choose your preferred platform.</p>
+        <div class="book-options">
+            <a href="https://wa.me/919744603000?text=I'd%20like%20to%20book%20a%20stay%20at%20Laxmi%20Tharavadu" class="book-opt" target="_blank">
+                <span class="book-opt-name">WhatsApp</span>
+                <span class="book-opt-desc">Direct booking</span>
+            </a>
+            <a href="https://www.airbnb.co.in/rooms/1093995311501169331" class="book-opt" target="_blank">
+                <span class="book-opt-name">Airbnb</span>
+                <span class="book-opt-desc">Verified reviews</span>
+            </a>
+            <a href="https://www.makemytrip.com/hotels/laxmi_tharavadu_heritage_home-details-talipparamba.html" class="book-opt" target="_blank">
+                <span class="book-opt-name">MakeMyTrip</span>
+                <span class="book-opt-desc">Instant confirmation</span>
+            </a>
+            <a href="https://www.goibibo.com/hotels/laxmi-ayur-tharavadu-hotel-in-talipparamba-519764177222875938/" class="book-opt" target="_blank">
+                <span class="book-opt-name">Goibibo</span>
+                <span class="book-opt-desc">Best price deals</span>
+            </a>
+        </div>
+        <div class="contact-row">
+            <div class="c-item">
+                <div class="c-lbl">Call or WhatsApp</div>
+                <div class="c-val"><a href="tel:+919744603000">+91 97446 03000</a></div>
+            </div>
+            <div class="c-item">
+                <div class="c-lbl">Location</div>
+                <div class="c-val" style="font-size:0.92rem;">Koovode, Thaliparamba<br>Kannur 670141, Kerala</div>
+            </div>
+            <div class="c-item">
+                <div class="c-lbl">Instagram</div>
+                <div class="c-val"><a href="https://www.instagram.com/tharavadu__laxmi/" target="_blank">@tharavadu__laxmi</a></div>
+            </div>
+            <div class="c-item">
+                <div class="c-lbl">Check-in / Check-out</div>
+                <div class="c-val" style="font-size:0.92rem;">12:00 PM &nbsp;/&nbsp; 11:00 AM</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FOOTER
+═══════════════════════════════ -->
+<footer>
+    <div class="container">
+        <a href="#hero" class="foot-logo">
+            <img src="assets/images/logo-white.png" alt="Laxmi Tharavadu">
+        </a>
+        <div class="foot-sub">Heritage Home &middot; Thaliparamba &middot; Kannur, Kerala</div>
+        <ul class="foot-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="https://www.instagram.com/tharavadu__laxmi/" target="_blank">Instagram</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#book">Book Now</a></li>
+        </ul>
+        <div class="foot-copy">&copy; 2024 Laxmi Tharavadu Heritage Home &middot; Koovode, Thaliparamba, Kannur, Kerala</div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════
+     WHATSAPP FAB — official SVG
+═══════════════════════════════ -->
+<a href="https://wa.me/919744603000" class="wa-fab" target="_blank" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+</a>
+
+<!-- ═══════════════════════════════
+     CHAT FAB + WINDOW
+═══════════════════════════════ -->
+<div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Ask us anything" aria-label="Chat with us">
+    <!-- speech bubble icon -->
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.043.74 3.923 1.967 5.415L3 21l4.734-1.396A10.265 10.265 0 0 0 12 20.486C17.523 20.486 22 16.34 22 11.243 22 6.145 17.523 2 12 2Z" stroke="rgba(240,184,0,0.75)" stroke-width="1.5" fill="none"/>
+    </svg>
+</div>
+
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <div class="chat-avatar">
+            <svg viewBox="0 0 24 24" fill="var(--forest)" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.043.74 3.923 1.967 5.415L3 21l4.734-1.396A10.265 10.265 0 0 0 12 20.486C17.523 20.486 22 16.34 22 11.243 22 6.145 17.523 2 12 2Z" fill="var(--forest)"/>
+            </svg>
+        </div>
+        <div>
+            <div class="chat-name">Laxmi Concierge</div>
+            <div class="chat-status">Usually replies instantly</div>
+        </div>
+        <button class="chat-x" onclick="toggleChat()">&#10005;</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" type="text" placeholder="Ask about rooms, stays, activities..." onkeydown="if(event.key==='Enter')sendMsg()">
+        <button class="chat-send" onclick="sendMsg()" aria-label="Send">
+            <svg viewBox="0 0 24 24" fill="var(--forest)" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="var(--forest)"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════ -->
+<script>
+/* ── NAV ── */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
+
+function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+}
+function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+}
+
+/* ── PARALLAX HERO BG ── */
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+    }
+}, { passive: true });
+
+/* ── REVEAL ON SCROLL ── */
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => {
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) e.target.classList.add('on'); },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    ).observe(el);
+});
+
+/* ── ROOM BACKGROUND IMAGES (local → CDN fallback) ── */
+const roomImgs = {
+    rm1: { local:'assets/images/room-patio.jpg',      cdn:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/d64efb9d-6459-4aa0-bfac-065f342c79c8.jpeg' },
+    rm2: { local:'assets/images/room-nadumuttam.jpg', cdn:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/aefd784d-f1d5-47dc-aab6-001ce35450fa.jpeg' },
+    rm3: { local:'assets/images/room-attic.jpg',      cdn:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/1dcd231d-b026-4c4f-a230-b532246fda10.jpeg' },
+    rm4: { local:'assets/images/room-garden.jpg',     cdn:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/2e199895-0071-496d-a9b1-6ca4a275b161.jpeg' }
+};
+Object.entries(roomImgs).forEach(([id, src]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const img = new Image();
+    img.onload = () => { el.style.backgroundImage = `url('${src.local}')`; };
+    img.onerror = () => { el.style.backgroundImage = `url('${src.cdn}')`; };
+    img.src = src.local;
+});
+
+/* ── HERO BG IMAGE (local → CDN fallback) ── */
+(function() {
+    const heroBgImg = document.querySelector('.hero-bg-img');
+    const local = 'assets/images/hero-bg.jpg';
+    const cdn   = 'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTA5Mzk5NTMxMTUwMTE2OTMzMQ==/original/382c78d2-9d6c-4f6e-9bb6-99f92f1cea84.jpeg';
+    const t = new Image();
+    t.onload = () => { heroBgImg.style.backgroundImage = `url('${local}')`; };
+    t.onerror = () => { heroBgImg.style.backgroundImage = `url('${cdn}')`; };
+    t.src = local;
+})();
+
+/* ── CSS RAIN DROPS (visual only) ── */
+(function() {
+    const layer = document.getElementById('rainLayer');
+    for (let i = 0; i < 90; i++) {
+        const d = document.createElement('div');
+        d.className = 'raindrop';
+        d.style.cssText = `left:${Math.random()*100}%;height:${20+Math.random()*55}px;animation-duration:${0.55+Math.random()*0.9}s;animation-delay:-${Math.random()*2}s;opacity:${0.06+Math.random()*0.28};`;
+        layer.appendChild(d);
+    }
+    /* subtle floating leaves in hero */
+    const hero = document.getElementById('hero');
+    const leafChars = ['✦', '✧', '·'];
+    for (let i = 0; i < 7; i++) {
+        const l = document.createElement('div');
+        l.className = 'leaf';
+        l.textContent = leafChars[i % 3];
+        l.style.cssText = `left:${8+Math.random()*84}%;color:rgba(75,120,89,0.4);animation-duration:${12+Math.random()*14}s;animation-delay:${Math.random()*8}s;`;
+        hero.appendChild(l);
+    }
+})();
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+}
+
+/* ── CHATBOT ── */
+const FAQ_KB = [
+    { k:['room','rooms','how many','bedroom'], a:'We have 4 rooms — The Patio Room, The Nadumuttam Room, and The Attic Room in the heritage block, and The Garden Room in the garden wing. Each has a queen bed and private attached bathroom. Prices from ₹2,000/night.' },
+    { k:['price','cost','rate','how much','tariff','₹'], a:'Rooms start from ₹2,000/night (Garden Room) and ₹2,151/night for heritage block rooms, with complimentary breakfast included. Contact us for group and whole-house rates.' },
+    { k:['breakfast','food','meal','eat','lunch','dinner','kitchen'], a:'Breakfast is included with every booking — Kerala-style or English. Lunch and dinner can be arranged for ~₹180/person. There is a shared kitchen for self-cooking, and our caretaker can help source local groceries.' },
+    { k:['check','checkin','checkout','time','arrive'], a:'Check-in is at 12:00 PM and check-out is at 11:00 AM. Need flexibility? Let us know on WhatsApp.' },
+    { k:['ac','air condition','cool','fan'], a:'The rooms are not air-conditioned. The Miyawaki forest provides natural cooling, and each room has a ceiling fan and standing fan. Most guests find it very comfortable.' },
+    { k:['pet','dog','cat','animal'], a:'Yes — Laxmi Tharavadu is proudly pet-friendly. Furry companions are very welcome here.' },
+    { k:['wifi','internet'], a:'Yes, complimentary WiFi is available throughout the property.' },
+    { k:['park','parking','car'], a:'Yes, free onsite parking is available for up to 3 cars.' },
+    { k:['whole','entire','group','family','all rooms'], a:'The entire property can be booked privately for up to 14 guests. WhatsApp us at +91 97446 03000 for group rates and availability.' },
+    { k:['airport','flight','train','railway','station','reach'], a:'Kannur International Airport is ~40 km away. Kannapuram Railway Station is 8.5 km away. We can arrange pickup and drop.' },
+    { k:['photo','shoot','photography','wedding','reel'], a:'Laxmi is one of Kannur\'s most sought-after photography locations. The lotus pond courtyard, the oonjal, carved heritage beams — all extremely photogenic. Contact us to plan your shoot.' },
+    { k:['cancel','refund'], a:'Free cancellation until 11:59 AM the day before check-in for direct bookings. Platform bookings follow their own policy.' },
+    { k:['tharavadu','heritage','history','old','1920'], a:'A Tharavadu is a traditional Kerala ancestral home. Laxmi Tharavadu was built in the 1920s and once housed a family of nine. The original architecture — nadumuttam courtyard with lotus pond, carved pillars, and the oonjal — is fully preserved.' },
+    { k:['miyawaki','forest','nature','birds','bird'], a:'The grounds use the Miyawaki planting method — dense native woodland that draws birds and wildlife unique to North Kerala. The morning bird chorus is one of the most-mentioned highlights by guests.' },
+    { k:['nearby','temple','beach','hill','theyyam','places'], a:'Sri Rajarajeshwara Temple (5.4 km), Parassinikadavu Muthappan Temple (9.1 km), Theyyam performances, Paithalmala Hill Station (~20 km), and Chootad Beach are all within easy reach.' },
+    { k:['book','reserve','contact','whatsapp','call'], a:'The easiest way is WhatsApp at +91 97446 03000. We also list on Airbnb, MakeMyTrip, and Goibibo.' },
+    { k:['bonfire','bbq','barbeque','fire','evening'], a:'Yes — bonfire evenings in the garden are one of the best things about Laxmi. BBQ can also be arranged. Just mention it when you book.' },
+    { k:['hello','hi','hey','namaste'], a:'Namaste! Welcome to Laxmi Tharavadu. I am happy to answer any questions about our heritage home in Thaliparamba, Kannur. What would you like to know?' },
+];
+const SUGGESTIONS = ['Rooms & pricing', 'Breakfast & food', 'How to reach', 'Nearby places', 'Book a stay'];
+
+let chatOpen = false, chatGreeted = false;
+
+function toggleChat() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+    if (chatOpen && !chatGreeted) {
+        chatGreeted = true;
+        setTimeout(() => addBot('Namaste! Welcome to Laxmi Tharavadu. How can I help you today?', true), 320);
+    }
+    if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 380);
+}
+
+function addBot(text, suggs) {
+    const msgs = document.getElementById('chatMsgs');
+    const div = document.createElement('div');
+    div.className = 'msg bot'; div.textContent = text;
+    if (suggs) {
+        const row = document.createElement('div'); row.className = 'msg-suggs';
+        SUGGESTIONS.forEach(s => {
+            const b = document.createElement('button'); b.className = 'sugg-btn'; b.textContent = s;
+            b.onclick = () => { document.getElementById('chatInput').value = s; sendMsg(); };
+            row.appendChild(b);
+        });
+        div.appendChild(row);
+    }
+    msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sendMsg() {
+    const inp = document.getElementById('chatInput');
+    const txt = inp.value.trim(); if (!txt) return;
+    inp.value = '';
+    const msgs = document.getElementById('chatMsgs');
+    const um = document.createElement('div'); um.className = 'msg user'; um.textContent = txt;
+    msgs.appendChild(um); msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(() => {
+        const q = txt.toLowerCase();
+        let reply = 'That is a great question. For the most accurate answer, please WhatsApp us at +91 97446 03000 and our team will respond promptly.';
+        for (const item of FAQ_KB) {
+            if (item.k.some(k => q.includes(k))) { reply = item.a; break; }
+        }
+        addBot(reply, false);
+    }, 460);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Instagram Post Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 24px;
+    min-height: 100vh;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .template-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .template-label {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+  }
+  /* The actual canvas — 1080x1080 scaled to 540x540 for screen preview */
+  .canvas {
+    width: 540px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  /* Variant 1: Gold accent on dark */
+  .v1 {
+    background: var(--forest);
+  }
+  .v1 .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--canopy) 0%, var(--forest) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-placeholder-text {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+  }
+  .v1 .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+      transparent 0%, 
+      transparent 35%, 
+      rgba(13,26,16,0.7) 60%, 
+      rgba(13,26,16,0.95) 100%
+    );
+  }
+  .v1 .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 36px;
+  }
+  .v1 .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .v1 .headline {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .v1 .tagline {
+    font-size: 13px;
+    color: var(--sage);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .v1 .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(240,184,0,0.3);
+  }
+  .v1 .handle {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .v1 .logo-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .v1 .logo-circle-sm {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .v1 .logo-text-sm {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  /* Gold accent top corner */
+  .corner-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+  }
+  .corner-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 90px 90px 0;
+    border-color: transparent var(--gold) transparent transparent;
+  }
+  .corner-accent-text {
+    position: absolute;
+    top: 14px;
+    right: 8px;
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--forest);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    white-space: nowrap;
+  }
+  /* Variant 2: Minimal cream */
+  .v2 {
+    background: var(--cream);
+    border: 1px solid #e0d8c8;
+  }
+  .v2 .header-strip {
+    background: var(--forest);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .v2 .header-strip .circle {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .v2 .header-strip .name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .v2 .photo-area {
+    height: 260px;
+    background: linear-gradient(135deg, var(--canopy) 0%, var(--deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .v2 .photo-area-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+  }
+  .v2 .gold-bar {
+    height: 3px;
+    background: var(--gold);
+  }
+  .v2 .text-area {
+    padding: 28px 36px 20px;
+    text-align: center;
+  }
+  .v2 .eyebrow-light {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 10px;
+  }
+  .v2 .headline-light {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .v2 .sub-light {
+    font-size: 12px;
+    color: var(--fern);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .v2 .footer-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    background: var(--forest);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .v2 .footer-handle {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .v2 .footer-web {
+    font-size: 10px;
+    color: var(--sage);
+  }
+</style>
+</head>
+<body>
+
+<div class="template-group">
+  <div class="template-label">Variant A &mdash; Photo with Overlay (1080 x 1080)</div>
+  <div class="canvas v1">
+    <div class="photo-placeholder">
+      <div class="photo-placeholder-text">Insert Photo Here</div>
+    </div>
+    <div class="overlay"></div>
+    <div class="corner-accent">
+      <div class="corner-accent-text">Heritage</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Heritage Stay &nbsp;&middot;&nbsp; Kannur, Kerala</div>
+      <div class="headline">A home that remembers<br>every monsoon.</div>
+      <div class="tagline">Wake up to the sound of rain on clay tiles. Stay at Laxmi Tharavadu.</div>
+      <div class="bottom-bar">
+        <div class="logo-badge">
+          <div class="logo-circle-sm">L</div>
+          <div class="logo-text-sm">LAXMI THARAVADU</div>
+        </div>
+        <div class="handle">@tharavadu__laxmi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="template-group">
+  <div class="template-label">Variant B &mdash; Minimal Editorial (1080 x 1080)</div>
+  <div class="canvas v2" style="position:relative;">
+    <div class="v2 header-strip">
+      <div class="circle">L</div>
+      <div class="name">LAXMI THARAVADU</div>
+    </div>
+    <div class="v2 photo-area">
+      <div class="v2 photo-area-text">Insert Photo Here</div>
+    </div>
+    <div class="v2 gold-bar"></div>
+    <div class="v2 text-area">
+      <div class="v2 eyebrow-light">Koovode, Thaliparamba &nbsp;&middot;&nbsp; Kannur</div>
+      <div class="v2 headline-light">Where tradition<br>feels like home.</div>
+      <div class="v2 sub-light">A heritage homestay rooted in Kerala's past,<br>open to those seeking stillness and story.</div>
+    </div>
+    <div class="v2 footer-strip">
+      <div class="v2 footer-handle">@tharavadu__laxmi</div>
+      <div class="v2 footer-web">laxmitharavadu.com</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

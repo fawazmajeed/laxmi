@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Colour Palette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: var(--ivory);
+    color: var(--forest);
+    min-height: 100vh;
+  }
+  header {
+    background: var(--forest);
+    padding: 56px 64px 48px;
+    border-bottom: 3px solid var(--gold);
+  }
+  header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  header p {
+    font-size: 15px;
+    color: var(--sage);
+    margin-top: 10px;
+    font-weight: 400;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0d9ce;
+  }
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+  .swatch-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(13,26,16,0.08);
+  }
+  .swatch-block {
+    height: 140px;
+    position: relative;
+  }
+  .swatch-primary-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.9);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .swatch-info {
+    background: white;
+    padding: 20px 22px 22px;
+    border: 1px solid #ede8de;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+  .swatch-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+  .swatch-usage {
+    font-size: 13px;
+    color: var(--fern);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .swatch-codes {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .code-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+  }
+  .code-label {
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 1px;
+    font-size: 10px;
+    text-transform: uppercase;
+    width: 44px;
+  }
+  .code-value {
+    font-weight: 600;
+    color: var(--forest);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+  }
+  .divider {
+    height: 1px;
+    background: #ede8de;
+    margin: 40px 0;
+  }
+  footer {
+    background: var(--forest);
+    padding: 32px 64px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--sage);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Brand Identity System</div>
+  <h1>Colour Palette</h1>
+  <p>Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Official Brand Colours</p>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Primary &amp; Brand Colours</div>
+  <div class="palette-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#F0B800;">
+        <span class="swatch-primary-badge">Primary Accent</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Brand Gold</div>
+        <div class="swatch-usage">Logo gold, primary accent, highlights, CTAs, decorative borders</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#F0B800</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">240, 184, 0</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">0, 23, 100, 6</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#C49600;">
+        <span class="swatch-primary-badge">Text Gold</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Gold Dark</div>
+        <div class="swatch-usage">Body text on light backgrounds, subheadings where gold would be too bright</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#C49600</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">196, 150, 0</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">0, 23, 100, 23</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#0D1A10;">
+        <span class="swatch-primary-badge">Primary Dark</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Forest Green</div>
+        <div class="swatch-usage">Hero backgrounds, primary dark surfaces, footer, dominant dark tone</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#0D1A10</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">13, 26, 16</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">50, 0, 38, 90</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">Supporting Greens</div>
+  <div class="palette-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#192C1E;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Canopy Green</div>
+        <div class="swatch-usage">Secondary dark backgrounds, card backgrounds, layered depth surfaces</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#192C1E</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">25, 44, 30</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">43, 0, 32, 83</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#1E3628;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep Green</div>
+        <div class="swatch-usage">Tertiary dark tone, sidebar backgrounds, section dividers on dark layouts</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#1E3628</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">30, 54, 40</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">44, 0, 26, 79</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#4B7859;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Fern Green</div>
+        <div class="swatch-usage">UI accent elements, icons, borders on light surfaces, section labels</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#4B7859</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">75, 120, 89</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">38, 0, 26, 53</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#78A888;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Sage Green</div>
+        <div class="swatch-usage">Light accent, muted text on dark, decorative tone, subtle UI elements</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#78A888</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">120, 168, 136</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">29, 0, 19, 34</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">Neutrals &amp; Warm Tones</div>
+  <div class="palette-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#F5EFE3; border: 1px solid #e8e0d0;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cream</div>
+        <div class="swatch-usage">Warm white for text on dark backgrounds, card fills, warm light surfaces</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#F5EFE3</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">245, 239, 227</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">0, 2, 7, 4</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#FAFAF5; border: 1px solid #eeede6;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ivory</div>
+        <div class="swatch-usage">Page backgrounds, light layout base, print white areas, form fields</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#FAFAF5</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">250, 250, 245</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">0, 0, 2, 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#5C3D1A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Earth Brown</div>
+        <div class="swatch-usage">Warm earth accent, packaging, printed materials, heritage warmth tone</div>
+        <div class="swatch-codes">
+          <div class="code-row"><span class="code-label">HEX</span><span class="code-value">#5C3D1A</span></div>
+          <div class="code-row"><span class="code-label">RGB</span><span class="code-value">92, 61, 26</span></div>
+          <div class="code-row"><span class="code-label">CMYK</span><span class="code-value">0, 34, 72, 64</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Colour Usage Principles</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px;">
+    <div style="background:var(--forest); padding: 32px; border-radius: 12px; border-left: 4px solid var(--gold);">
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">On Dark Backgrounds</div>
+      <div style="color: var(--cream); font-size: 14px; line-height: 1.8;">
+        Use Cream or Ivory for primary text. Use Brand Gold for headings and accents. Use Sage Green for secondary text. Never use Earth Brown on Forest Green.
+      </div>
+    </div>
+    <div style="background: white; padding: 32px; border-radius: 12px; border-left: 4px solid var(--fern); border: 1px solid #e8e0d0;">
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--fern); text-transform: uppercase; margin-bottom: 16px;">On Light Backgrounds</div>
+      <div style="color: var(--forest); font-size: 14px; line-height: 1.8;">
+        Use Forest Green or Gold Dark for primary text. Use Fern Green for accents and labels. Brand Gold (#F0B800) should only appear as decorative accent, not as large text on white.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Brand Identity System &nbsp;&middot;&nbsp; Confidential
+</footer>
+
+</body>
+</html>

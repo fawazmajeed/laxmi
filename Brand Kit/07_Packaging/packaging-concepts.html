@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Packaging Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: var(--ivory);
+    color: var(--forest);
+  }
+  header {
+    background: var(--forest);
+    padding: 48px 64px 40px;
+    border-bottom: 3px solid var(--gold);
+  }
+  header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  header p { font-size: 15px; color: var(--sage); margin-top: 10px; }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0d9ce;
+  }
+  .concepts-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .concept-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .concept-caption {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    text-align: center;
+  }
+  .divider { height: 1px; background: #e8e0d0; margin: 16px 0 64px; }
+
+  /* === WELCOME CARD (85mm x 55mm at 96dpi preview) === */
+  .welcome-card {
+    width: 320px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 28px rgba(13,26,16,0.15);
+    position: relative;
+  }
+  /* Front */
+  .wc-front {
+    background: var(--forest);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px 26px 18px;
+    position: relative;
+  }
+  .wc-corner-tl, .wc-corner-br {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+  }
+  .wc-corner-tl { top: 12px; left: 12px; border-top: 1.5px solid var(--gold); border-left: 1.5px solid var(--gold); }
+  .wc-corner-br { bottom: 12px; right: 12px; border-bottom: 1.5px solid var(--gold); border-right: 1.5px solid var(--gold); }
+  .wc-top { display: flex; align-items: center; gap: 8px; }
+  .wc-circle {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; color: var(--gold);
+  }
+  .wc-brand { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+  .wc-sub { font-size: 7px; color: var(--sage); letter-spacing: 1.5px; text-transform: uppercase; }
+  .wc-center { text-align: center; }
+  .wc-greet { font-size: 18px; font-weight: 800; color: var(--cream); line-height: 1.1; }
+  .wc-greet-sub { font-size: 9px; color: var(--sage); letter-spacing: 1px; margin-top: 4px; }
+  .wc-bottom { text-align: center; }
+  .wc-tagline { font-size: 8px; color: rgba(120,168,136,0.7); font-style: italic; line-height: 1.5; }
+
+  /* Back */
+  .wc-back {
+    background: var(--cream);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 28px;
+    text-align: center;
+    border: 1px solid #e0d8c8;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .wc-back-top-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+  }
+  .wc-back-name { font-size: 12px; font-weight: 800; color: var(--forest); letter-spacing: 1px; margin-bottom: 6px; }
+  .wc-back-text { font-size: 10px; color: var(--fern); line-height: 1.7; margin-bottom: 14px; }
+  .wc-back-contact { font-size: 9px; color: #888; }
+  .wc-back-bottom-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--fern);
+  }
+
+  /* === KEY TAG (60mm x 30mm preview) === */
+  .key-tag-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .key-tag-hole {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--earth);
+    background: var(--ivory);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .key-tag {
+    width: 220px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(13,26,16,0.15);
+    position: relative;
+  }
+  .kt-front {
+    background: var(--canopy);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 18px 12px;
+  }
+  .kt-top { display: flex; align-items: center; gap: 6px; }
+  .kt-circle {
+    width: 20px; height: 20px;
+    border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; font-weight: 800; color: var(--gold);
+  }
+  .kt-name { font-size: 8px; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+  .kt-center { text-align: center; }
+  .kt-room { font-size: 22px; font-weight: 800; color: var(--cream); line-height: 1; }
+  .kt-room-label { font-size: 7px; color: var(--sage); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .kt-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(240,184,0,0.2);
+    padding-top: 6px;
+  }
+  .kt-note { font-size: 7px; color: rgba(120,168,136,0.6); }
+  .kt-phone { font-size: 7px; color: var(--gold); font-weight: 600; }
+
+  /* === AMENITY LABEL (70mm x 40mm label for soap/shampoo) === */
+  .amenity-label {
+    width: 264px;
+    height: 151px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(13,26,16,0.15);
+    position: relative;
+  }
+  .al-body {
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    border: 1.5px solid #d8d0c0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .al-top-strip {
+    background: var(--forest);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .al-circle {
+    width: 18px; height: 18px;
+    border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; font-weight: 800; color: var(--gold);
+  }
+  .al-brand { font-size: 8px; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+  .al-brand-sub { font-size: 6px; color: var(--sage); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .al-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 14px;
+  }
+  .al-product-name { font-size: 14px; font-weight: 800; color: var(--forest); letter-spacing: 0.5px; }
+  .al-product-type { font-size: 8px; font-weight: 600; color: var(--fern); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .al-divider { width: 32px; height: 1.5px; background: var(--gold); margin: 6px auto; }
+  .al-note { font-size: 8px; color: #888; text-align: center; line-height: 1.5; }
+  .al-bottom {
+    background: var(--forest);
+    padding: 5px 14px;
+    text-align: center;
+    border-top: 1.5px solid var(--gold);
+  }
+  .al-bottom-text { font-size: 7px; color: var(--sage); letter-spacing: 1px; }
+
+  /* === THANK YOU NOTE CARD === */
+  .thankyou-card {
+    width: 280px;
+    height: 195px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(13,26,16,0.15);
+  }
+  .ty-body {
+    background: var(--ivory);
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd8ce;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .ty-left-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--fern) 100%);
+  }
+  .ty-content {
+    padding: 20px 20px 20px 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ty-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .ty-greeting { font-size: 18px; font-weight: 800; color: var(--forest); line-height: 1.1; }
+  .ty-greeting-sub { font-size: 8px; color: var(--fern); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .ty-circle {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; color: var(--gold-dark);
+  }
+  .ty-middle {
+    font-size: 9.5px;
+    color: #666;
+    line-height: 1.7;
+    border-top: 1px solid #e8e0d0;
+    padding-top: 10px;
+  }
+  .ty-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .ty-brand { font-size: 8px; font-weight: 700; color: var(--forest); letter-spacing: 0.5px; }
+  .ty-brand-sub { font-size: 7px; color: #aaa; letter-spacing: 1px; }
+  .ty-web { font-size: 8px; color: var(--gold-dark); font-weight: 600; }
+
+  footer {
+    background: var(--forest);
+    padding: 32px 64px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--sage);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Brand Identity System</div>
+  <h1>Packaging Concepts</h1>
+  <p>Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Print &amp; Hospitality Collateral</p>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Welcome Card &nbsp;&middot;&nbsp; Business Card Size (85 x 55 mm)</div>
+  <div class="concepts-row">
+
+    <div class="concept-item">
+      <div class="concept-caption">Welcome Card &mdash; Front</div>
+      <div class="welcome-card">
+        <div class="wc-front">
+          <div class="wc-corner-tl"></div>
+          <div class="wc-corner-br"></div>
+          <div class="wc-top">
+            <div class="wc-circle">L</div>
+            <div>
+              <div class="wc-brand">LAXMI THARAVADU</div>
+              <div class="wc-sub">Heritage Home</div>
+            </div>
+          </div>
+          <div class="wc-center">
+            <div class="wc-greet">Namaskaram.</div>
+            <div class="wc-greet-sub">Welcome to our home.</div>
+          </div>
+          <div class="wc-bottom">
+            <div class="wc-tagline">Where the forest breathes and old walls hold a hundred stories.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-item">
+      <div class="concept-caption">Welcome Card &mdash; Back</div>
+      <div class="welcome-card">
+        <div class="wc-back">
+          <div class="wc-back-top-strip"></div>
+          <div class="wc-back-name">LAXMI THARAVADU</div>
+          <div class="wc-back-text">This home has been lived in for generations. We hope it holds your story too. Please reach us anytime during your stay.</div>
+          <div class="wc-back-contact">+91 97446 03000 &nbsp;&middot;&nbsp; laxmitharavadu.com</div>
+          <div class="wc-back-bottom-strip"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Room Key Tag &nbsp;&middot;&nbsp; 60 x 30 mm</div>
+  <div class="concepts-row">
+
+    <div class="concept-item">
+      <div class="concept-caption">Key Tag &mdash; Room 01</div>
+      <div class="key-tag-wrap">
+        <div class="key-tag-hole"></div>
+        <div class="key-tag">
+          <div class="kt-front">
+            <div class="kt-top">
+              <div class="kt-circle">L</div>
+              <div class="kt-name">LAXMI THARAVADU</div>
+            </div>
+            <div class="kt-center">
+              <div class="kt-room">01</div>
+              <div class="kt-room-label">The Forest Room</div>
+            </div>
+            <div class="kt-bottom">
+              <div class="kt-note">Please return to reception</div>
+              <div class="kt-phone">+91 97446 03000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-item">
+      <div class="concept-caption">Key Tag &mdash; Room 02</div>
+      <div class="key-tag-wrap">
+        <div class="key-tag-hole"></div>
+        <div class="key-tag">
+          <div class="kt-front">
+            <div class="kt-top">
+              <div class="kt-circle">L</div>
+              <div class="kt-name">LAXMI THARAVADU</div>
+            </div>
+            <div class="kt-center">
+              <div class="kt-room">02</div>
+              <div class="kt-room-label">The Garden Suite</div>
+            </div>
+            <div class="kt-bottom">
+              <div class="kt-note">Please return to reception</div>
+              <div class="kt-phone">+91 97446 03000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Amenity Labels &nbsp;&middot;&nbsp; 70 x 40 mm</div>
+  <div class="concepts-row">
+
+    <div class="concept-item">
+      <div class="concept-caption">Amenity Label &mdash; Shampoo</div>
+      <div class="amenity-label">
+        <div class="al-body">
+          <div class="al-top-strip">
+            <div class="al-circle">L</div>
+            <div>
+              <div class="al-brand">LAXMI THARAVADU</div>
+              <div class="al-brand-sub">Heritage Home</div>
+            </div>
+          </div>
+          <div class="al-center">
+            <div class="al-product-name">Shampoo</div>
+            <div class="al-product-type">Hair Care</div>
+            <div class="al-divider"></div>
+            <div class="al-note">Natural ingredients &nbsp;&middot;&nbsp; Gentle formula<br>Kannan, Kerala</div>
+          </div>
+          <div class="al-bottom">
+            <div class="al-bottom-text">laxmitharavadu.com &nbsp;&middot;&nbsp; @tharavadu__laxmi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-item">
+      <div class="concept-caption">Amenity Label &mdash; Body Soap</div>
+      <div class="amenity-label">
+        <div class="al-body">
+          <div class="al-top-strip">
+            <div class="al-circle">L</div>
+            <div>
+              <div class="al-brand">LAXMI THARAVADU</div>
+              <div class="al-brand-sub">Heritage Home</div>
+            </div>
+          </div>
+          <div class="al-center">
+            <div class="al-product-name">Body Soap</div>
+            <div class="al-product-type">Bath &amp; Body</div>
+            <div class="al-divider"></div>
+            <div class="al-note">Handcrafted &nbsp;&middot;&nbsp; Coconut oil base<br>Made with care in Kerala</div>
+          </div>
+          <div class="al-bottom">
+            <div class="al-bottom-text">laxmitharavadu.com &nbsp;&middot;&nbsp; @tharavadu__laxmi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-item">
+      <div class="concept-caption">Amenity Label &mdash; Conditioner</div>
+      <div class="amenity-label">
+        <div class="al-body">
+          <div class="al-top-strip">
+            <div class="al-circle">L</div>
+            <div>
+              <div class="al-brand">LAXMI THARAVADU</div>
+              <div class="al-brand-sub">Heritage Home</div>
+            </div>
+          </div>
+          <div class="al-center">
+            <div class="al-product-name">Conditioner</div>
+            <div class="al-product-type">Hair Care</div>
+            <div class="al-divider"></div>
+            <div class="al-note">Nourishing &nbsp;&middot;&nbsp; Ayurvedic blend<br>Kannur, Kerala</div>
+          </div>
+          <div class="al-bottom">
+            <div class="al-bottom-text">laxmitharavadu.com &nbsp;&middot;&nbsp; @tharavadu__laxmi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Thank You Note &nbsp;&middot;&nbsp; 74 x 52 mm</div>
+  <div class="concepts-row">
+
+    <div class="concept-item">
+      <div class="concept-caption">Thank You Note &mdash; Guest Card</div>
+      <div class="thankyou-card">
+        <div class="ty-body">
+          <div class="ty-left-bar"></div>
+          <div class="ty-content">
+            <div class="ty-top">
+              <div>
+                <div class="ty-greeting">Thank you.</div>
+                <div class="ty-greeting-sub">For choosing us</div>
+              </div>
+              <div class="ty-circle">L</div>
+            </div>
+            <div class="ty-middle">
+              It was a privilege to host you. We hope the forest, the stillness, and these old walls gave you something worth carrying home.
+            </div>
+            <div class="ty-bottom">
+              <div>
+                <div class="ty-brand">Laxmi Tharavadu</div>
+                <div class="ty-brand-sub">Heritage Home, Kannur</div>
+              </div>
+              <div class="ty-web">laxmitharavadu.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  Laxmi Tharavadu Heritage Home &nbsp;&middot;&nbsp; Brand Identity System &nbsp;&middot;&nbsp; Confidential
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Letterhead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: #d0cec8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 24px;
+    min-height: 100vh;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Header */
+  .page-header {
+    background: var(--forest);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px 20px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-circle {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .logo-text-block { }
+  .logo-main {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .logo-sub {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--sage);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-tagline {
+    font-size: 10px;
+    color: var(--sage);
+    font-style: italic;
+    font-weight: 400;
+    max-width: 220px;
+    line-height: 1.5;
+  }
+  .gold-rule {
+    height: 2.5px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+    margin: 0 36px;
+  }
+  .header-contact-strip {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 36px 16px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--sage);
+    letter-spacing: 0.5px;
+  }
+  .contact-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  /* Body */
+  .page-body {
+    flex: 1;
+    padding: 44px 52px 36px;
+    position: relative;
+  }
+  .date-line {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .recipient-block {
+    margin-bottom: 36px;
+  }
+  .recipient-block p {
+    font-size: 13px;
+    color: var(--forest);
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .subject-line {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e0d0;
+  }
+  .subject-line span {
+    color: var(--gold-dark);
+  }
+  .body-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 2;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .body-placeholder {
+    color: #bbb;
+    font-style: italic;
+  }
+  .signature-block {
+    margin-top: 48px;
+  }
+  .sig-close {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .sig-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+  .sig-title {
+    font-size: 11px;
+    color: var(--fern);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .sig-brand {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+  }
+  /* Left accent bar */
+  .left-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--fern) 50%, transparent 100%);
+    border-radius: 0;
+  }
+  /* Footer */
+  .page-footer {
+    background: var(--forest);
+    padding: 14px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--gold);
+  }
+  .footer-left {
+    font-size: 9.5px;
+    color: var(--sage);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+  }
+  .footer-right {
+    font-size: 9.5px;
+    color: var(--sage);
+    text-align: right;
+    line-height: 1.6;
+  }
+  .footer-web {
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  @media print {
+    body {
+      background: none;
+      padding: 0;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      box-shadow: none;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-circle">L</div>
+        <div class="logo-text-block">
+          <div class="logo-main">LAXMI</div>
+          <div class="logo-sub">Tharavadu Heritage Home</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-tagline">Where the forest breathes and old walls hold a hundred stories</div>
+      </div>
+    </div>
+    <div class="gold-rule"></div>
+    <div class="header-contact-strip">
+      <div class="contact-item"><span class="contact-dot"></span> Koovode, Thaliparamba, Kannur 670141</div>
+      <div class="contact-item"><span class="contact-dot"></span> +91 97446 03000</div>
+      <div class="contact-item"><span class="contact-dot"></span> laxmitharavadu.com</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="left-accent"></div>
+
+    <div class="date-line">May 31, 2026</div>
+
+    <div class="recipient-block">
+      <p>
+        [Recipient Name]<br>
+        [Designation / Title]<br>
+        [Organisation Name]<br>
+        [City, State, PIN]
+      </p>
+    </div>
+
+    <div class="subject-line">
+      Subject: <span>[Enter subject of this communication]</span>
+    </div>
+
+    <p class="body-text">Dear [Recipient Name],</p>
+
+    <p class="body-text body-placeholder">
+      [Begin your letter here. This template uses Baloo 2 at 13px with 2.0 line-height for optimal readability on A4 print. The body area is 146mm wide — standard A4 with 52mm total horizontal padding. Replace this placeholder with your actual communication.]
+    </p>
+
+    <p class="body-text body-placeholder">
+      [Second paragraph. Keep paragraphs concise. This letterhead is designed for formal correspondence including booking confirmations, partnership proposals, and guest communications on behalf of Laxmi Tharavadu Heritage Home.]
+    </p>
+
+    <p class="body-text body-placeholder">
+      [Third paragraph if required. For short letters, leave this area blank and move directly to the signature block.]
+    </p>
+
+    <div class="signature-block">
+      <p class="sig-close">Warm regards,</p>
+      <div class="sig-name">[Name of Signatory]</div>
+      <div class="sig-title">[Title / Role]</div>
+      <div class="sig-brand">Laxmi Tharavadu Heritage Home</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">
+      Koovode, Thaliparamba, Kannur 670141, Kerala, India<br>
+      Phone &amp; WhatsApp: +91 97446 03000
+    </div>
+    <div class="footer-right">
+      <span class="footer-web">laxmitharavadu.com</span><br>
+      @tharavadu__laxmi
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

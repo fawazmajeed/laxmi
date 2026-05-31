@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — WhatsApp Status Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 24px;
+    gap: 40px;
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+  .template-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .template-label {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+  }
+  /* 800x800 scaled to 400x400 for preview */
+  .wa-canvas {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  /* Variant A: Dark gold minimal */
+  .wa1 {
+    background: var(--forest);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+  }
+  .wa1 .top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wa1 .circle {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .wa1 .brand-name { font-size: 12px; font-weight: 800; color: var(--cream); letter-spacing: 1px; }
+  .wa1 .brand-loc { font-size: 9px; color: var(--sage); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .wa1 .center {
+    text-align: center;
+  }
+  .wa1 .tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .wa1 .headline {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .wa1 .gold-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 12px;
+  }
+  .wa1 .sub {
+    font-size: 12px;
+    color: var(--sage);
+    line-height: 1.6;
+  }
+  .wa1 .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(240,184,0,0.2);
+  }
+  .wa1 .handle { font-size: 10px; color: var(--gold); font-weight: 600; }
+  .wa1 .web { font-size: 10px; color: var(--sage); }
+
+  /* Decorative corner lines */
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+  }
+  .corner-tl {
+    top: 20px;
+    left: 20px;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+  }
+  .corner-br {
+    bottom: 20px;
+    right: 20px;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+
+  /* Variant B: Cream warm */
+  .wa2 {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+  }
+  .wa2 .wa2-top {
+    background: var(--forest);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .wa2 .wa2-circle {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .wa2 .wa2-name { font-size: 11px; font-weight: 800; color: var(--cream); letter-spacing: 1px; }
+  .wa2 .wa2-sub { font-size: 8px; color: var(--sage); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .wa2 .wa2-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 28px;
+    text-align: center;
+  }
+  .wa2 .wa2-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 14px;
+  }
+  .wa2 .wa2-headline {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .wa2 .wa2-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 14px;
+  }
+  .wa2 .wa2-tagline {
+    font-size: 12px;
+    color: var(--fern);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+  .wa2 .wa2-footer {
+    background: var(--forest);
+    padding: 10px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--gold);
+  }
+  .wa2 .wa2-handle { font-size: 10px; color: var(--gold); font-weight: 600; }
+  .wa2 .wa2-web { font-size: 9px; color: var(--sage); }
+
+  /* Variant C: Photo with text bar */
+  .wa3 { background: var(--canopy); }
+  .wa3 .wa3-photo {
+    height: 280px;
+    background: linear-gradient(135deg, var(--deep) 0%, var(--canopy) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .wa3 .wa3-photo-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.15);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .wa3 .wa3-text {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .wa3 .wa3-left { flex: 1; }
+  .wa3 .wa3-eyebrow { font-size: 9px; color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .wa3 .wa3-headline { font-size: 20px; font-weight: 800; color: var(--cream); line-height: 1.2; }
+  .wa3 .wa3-right { text-align: right; }
+  .wa3 .wa3-circle {
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-left: auto;
+    margin-bottom: 6px;
+  }
+  .wa3 .wa3-handle { font-size: 10px; color: var(--sage); }
+  .wa3 .wa3-footer {
+    padding: 0 28px 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .wa3 .wa3-web { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+
+<div class="template-group">
+  <div class="template-label">WhatsApp Status A &mdash; Dark Gold (800 x 800)</div>
+  <div class="wa-canvas wa1">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="top">
+      <div class="circle">L</div>
+      <div>
+        <div class="brand-name">LAXMI THARAVADU</div>
+        <div class="brand-loc">Koovode, Kannur</div>
+      </div>
+    </div>
+    <div class="center">
+      <div class="tag">Heritage Stay</div>
+      <div class="headline">Still mornings.<br>Ancient walls.</div>
+      <div class="gold-rule"></div>
+      <div class="sub">Book your stay at<br>Laxmi Tharavadu Heritage Home</div>
+    </div>
+    <div class="bottom">
+      <div class="handle">@tharavadu__laxmi</div>
+      <div class="web">laxmitharavadu.com</div>
+    </div>
+  </div>
+</div>
+
+<div class="template-group">
+  <div class="template-label">WhatsApp Status B &mdash; Warm Cream (800 x 800)</div>
+  <div class="wa-canvas wa2">
+    <div class="wa2-top">
+      <div class="wa2-circle">L</div>
+      <div>
+        <div class="wa2-name">LAXMI THARAVADU</div>
+        <div class="wa2-sub">Heritage Home</div>
+      </div>
+    </div>
+    <div class="wa2-body">
+      <div class="wa2-eyebrow">Thaliparamba, Kannur, Kerala</div>
+      <div class="wa2-headline">Heritage is not<br>the past. It is home.</div>
+      <div class="wa2-divider"></div>
+      <div class="wa2-tagline">Where the forest breathes and old walls hold a hundred stories.</div>
+    </div>
+    <div class="wa2-footer">
+      <div class="wa2-handle">@tharavadu__laxmi</div>
+      <div class="wa2-web">laxmitharavadu.com</div>
+    </div>
+  </div>
+</div>
+
+<div class="template-group">
+  <div class="template-label">WhatsApp Status C &mdash; Photo Bar (800 x 800)</div>
+  <div class="wa-canvas wa3">
+    <div class="wa3-photo">
+      <div class="wa3-photo-label">Insert Photo Here</div>
+    </div>
+    <div class="wa3-text">
+      <div class="wa3-left">
+        <div class="wa3-eyebrow">Kannur, Kerala</div>
+        <div class="wa3-headline">Live a heritage<br>story. Just once.</div>
+      </div>
+      <div class="wa3-right">
+        <div class="wa3-circle">L</div>
+        <div class="wa3-handle">@tharavadu__laxmi</div>
+      </div>
+    </div>
+    <div class="wa3-footer">
+      <div class="wa3-web">laxmitharavadu.com &nbsp;&middot;&nbsp; +91 97446 03000</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

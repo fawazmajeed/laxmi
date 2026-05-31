@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Tharavadu — Instagram Story Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0B800;
+    --gold-dark: #C49600;
+    --forest: #0D1A10;
+    --canopy: #192C1E;
+    --deep: #1E3628;
+    --fern: #4B7859;
+    --sage: #78A888;
+    --cream: #F5EFE3;
+    --ivory: #FAFAF5;
+    --earth: #5C3D1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 24px;
+    min-height: 100vh;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .template-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .template-label {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+  }
+  /* Story canvas: 1080x1920 scaled 50% = 540x960 */
+  .story-canvas {
+    width: 337px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  }
+
+  /* Variant A: Full bleed photo with layered content */
+  .sa {
+    background: var(--forest);
+  }
+  .sa .bg-photo {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--canopy) 0%, var(--forest) 60%, #060d07 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sa .bg-photo-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.1);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sa .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(13,26,16,0.85) 0%,
+      rgba(13,26,16,0.2) 30%,
+      rgba(13,26,16,0.15) 55%,
+      rgba(13,26,16,0.85) 80%,
+      rgba(13,26,16,0.98) 100%
+    );
+  }
+  .sa .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sa .logo-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sa .logo-circle {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .sa .logo-name {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--cream);
+    letter-spacing: 1px;
+  }
+  .sa .logo-sub {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--sage);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+  .sa .center-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0 28px;
+    text-align: center;
+  }
+  .sa .center-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .sa .center-headline {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .sa .center-body {
+    font-size: 13px;
+    color: var(--sage);
+    line-height: 1.7;
+  }
+  .sa .gold-line {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto;
+  }
+  .sa .bottom-cta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 28px 28px;
+    text-align: center;
+  }
+  .sa .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .sa .swipe-text {
+    font-size: 10px;
+    color: var(--sage);
+    letter-spacing: 1px;
+  }
+  .sa .swipe-arrow {
+    display: block;
+    font-size: 16px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  /* Variant B: Bold minimal */
+  .sb {
+    background: var(--cream);
+  }
+  .sb .top-block {
+    background: var(--forest);
+    padding: 28px 28px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sb .sb-circle {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+  }
+  .sb .sb-name { font-size: 13px; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+  .sb .sb-sub { font-size: 8px; color: var(--sage); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .sb .sb-photo {
+    height: 280px;
+    background: linear-gradient(135deg, var(--deep) 0%, var(--canopy) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .sb .sb-photo-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.15);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sb .sb-gold-bar { height: 3px; background: var(--gold); }
+  .sb .sb-text {
+    padding: 28px 28px 20px;
+    text-align: center;
+  }
+  .sb .sb-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 12px;
+  }
+  .sb .sb-headline {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .sb .sb-body {
+    font-size: 12px;
+    color: var(--fern);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .sb .sb-cta {
+    display: inline-block;
+    border: 2px solid var(--forest);
+    color: var(--forest);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .sb .sb-footer {
+    background: var(--forest);
+    padding: 12px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .sb .sb-handle { font-size: 10px; color: var(--gold); font-weight: 600; }
+  .sb .sb-web { font-size: 9px; color: var(--sage); }
+</style>
+</head>
+<body>
+
+<div class="template-group">
+  <div class="template-label">Story Variant A &mdash; Photo Overlay (1080 x 1920)</div>
+  <div class="story-canvas sa">
+    <div class="bg-photo">
+      <div class="bg-photo-label">Insert Full-Bleed Photo</div>
+    </div>
+    <div class="overlay-gradient"></div>
+    <div class="top-bar">
+      <div class="logo-badge">
+        <div class="logo-circle">L</div>
+        <div>
+          <div class="logo-name">LAXMI THARAVADU</div>
+          <div class="logo-sub">Heritage Home</div>
+        </div>
+      </div>
+    </div>
+    <div class="center-content">
+      <div class="center-tag">Now Open for Bookings</div>
+      <div class="center-headline">Come home<br>to the forest.</div>
+      <div class="gold-line"></div>
+      <div class="center-body">A heritage stay unlike any other.<br>Kannur, Kerala.</div>
+    </div>
+    <div class="bottom-cta">
+      <div class="cta-btn">Book Your Stay</div>
+      <div class="swipe-text">
+        <span class="swipe-arrow">&#8593;</span>
+        laxmitharavadu.com
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="template-group">
+  <div class="template-label">Story Variant B &mdash; Editorial Clean (1080 x 1920)</div>
+  <div class="story-canvas sb" style="position:relative;">
+    <div class="top-block">
+      <div class="sb-circle">L</div>
+      <div>
+        <div class="sb-name">LAXMI THARAVADU</div>
+        <div class="sb-sub">Heritage Home, Kannur</div>
+      </div>
+    </div>
+    <div class="sb-photo">
+      <div class="sb-photo-label">Insert Photo Here</div>
+    </div>
+    <div class="sb-gold-bar"></div>
+    <div class="sb-text">
+      <div class="sb-tag">Heritage &middot; Nature &middot; Story</div>
+      <div class="sb-headline">Old walls.<br>New memories.</div>
+      <div class="sb-body">Experience life the way Kannur has always lived it. Forest mornings, clay tile afternoons, and a home that holds a hundred stories.</div>
+      <div class="sb-cta">Link in Bio</div>
+    </div>
+    <div class="sb-footer">
+      <div class="sb-handle">@tharavadu__laxmi</div>
+      <div class="sb-web">laxmitharavadu.com</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
