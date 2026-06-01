@@ -581,6 +581,13 @@
             font-family: var(--serif); font-style:italic;
             font-size:0.78rem; color:rgba(245,239,227,0.35);
         }
+        .book-opt.zotel {
+            border-color: rgba(240,184,0,0.35);
+            min-width: 220px;
+        }
+        .book-opt.zotel:hover { border-color: var(--gold); }
+        .book-opt.zotel .book-opt-name { font-size:0.8rem; letter-spacing:0.14em; }
+        .book-opt.zotel .book-opt-desc { color: rgba(240,184,0,0.5); }
         .contact-row {
             padding-top:3rem;
             border-top:1px solid rgba(245,239,227,0.07);
@@ -649,15 +656,51 @@
         ───────────────────────────────────────── */
         .chat-fab {
             position:fixed; bottom:1.8rem; right:6rem; z-index:300;
-            width:52px; height:52px; border-radius:50%;
-            background:var(--canopy);
-            border:1px solid rgba(240,184,0,0.32);
+            width:54px; height:54px; border-radius:50%;
+            background:var(--forest);
+            border:2px solid rgba(240,184,0,0.5);
             display:flex; align-items:center; justify-content:center;
-            cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,0.45);
+            cursor:pointer; box-shadow:0 4px 18px rgba(0,0,0,0.5);
             transition:all 0.3s;
+            overflow:hidden;
         }
-        .chat-fab:hover { border-color:var(--gold); transform:scale(1.05); }
-        .chat-fab svg { width:22px; height:22px; }
+        .chat-fab::before {
+            content:'';
+            position:absolute; inset:-2px; border-radius:50%;
+            border:2px solid transparent;
+            background:conic-gradient(var(--gold) 0deg, transparent 200deg) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: rotateBorder 4s linear infinite;
+            opacity: 0.6;
+        }
+        @keyframes rotateBorder { to { transform: rotate(360deg); } }
+        .chat-fab:hover { border-color:var(--gold); transform:scale(1.06); box-shadow:0 6px 24px rgba(240,184,0,0.3); }
+        .chat-fab:hover::before { opacity:1; }
+        .chat-fab-inner {
+            display:flex; flex-direction:column; align-items:center;
+            justify-content:center; gap:1px; position:relative; z-index:1;
+        }
+        .chat-fab-ai {
+            font-family: var(--brand); font-weight:800;
+            font-size:0.9rem; line-height:1; color:var(--gold);
+            letter-spacing:0.05em;
+        }
+        .chat-fab-dots {
+            display:flex; gap:3px;
+        }
+        .chat-fab-dots span {
+            width:3px; height:3px; border-radius:50%;
+            background:rgba(240,184,0,0.6);
+            animation: dotPulse 1.4s ease infinite;
+        }
+        .chat-fab-dots span:nth-child(2) { animation-delay:0.2s; }
+        .chat-fab-dots span:nth-child(3) { animation-delay:0.4s; }
+        @keyframes dotPulse {
+            0%,60%,100% { opacity:0.3; transform:scale(1); }
+            30% { opacity:1; transform:scale(1.4); }
+        }
         .chat-window {
             position:fixed; bottom:5.8rem; right:1.8rem; z-index:300;
             width:330px; max-height:460px;
@@ -977,7 +1020,7 @@
                         <span class="chip">Garden View</span>
                         <span class="chip">Private Patio</span>
                     </div>
-                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Patio%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                    <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20The%20Patio%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -996,7 +1039,7 @@
                         <span class="chip">Courtyard View</span>
                         <span class="chip">Heritage Block</span>
                     </div>
-                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Nadumuttam%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                    <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20The%20Nadumuttam%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -1015,7 +1058,7 @@
                         <span class="chip">Garden View</span>
                         <span class="chip">Upper Level</span>
                     </div>
-                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Attic%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                    <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20The%20Attic%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -1034,14 +1077,14 @@
                         <span class="chip">Kitchenette</span>
                         <span class="chip">Garden Wing</span>
                     </div>
-                    <a href="https://wa.me/919744603000?text=I'd%20like%20to%20enquire%20about%20The%20Garden%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
+                    <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20The%20Garden%20Room%20at%20Laxmi%20Tharavadu" class="room-link" target="_blank">Enquire on WhatsApp</a>
                 </div>
             </div>
         </div>
 
     </div>
     <div class="container">
-        <p class="rooms-note">Entire home available for private bookings up to 14 guests. <a href="https://wa.me/919744603000">Contact us</a> for group rates.</p>
+        <p class="rooms-note">Entire home available for private bookings up to 14 guests. <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20full%20property%20booking%20at%20Laxmi%20Tharavadu" target="_blank">WhatsApp us</a> for group rates.</p>
     </div>
 </section>
 
@@ -1304,29 +1347,21 @@
     <div class="container">
         <p class="sect-kicker">Reserve Your Stay</p>
         <h2 class="sect-title">Come Home to <em>Laxmi</em></h2>
-        <p class="book-sub">Book directly on WhatsApp for the most personal experience. Or choose your preferred platform.</p>
+        <p class="book-sub">Book online through our official listing, or reach us directly on WhatsApp for a personal response within the hour.</p>
         <div class="book-options">
-            <a href="https://wa.me/919744603000?text=I'd%20like%20to%20book%20a%20stay%20at%20Laxmi%20Tharavadu" class="book-opt" target="_blank">
+            <a href="https://www.zotel.ai/hotels/laxmi-tharavadu-heritage-home/" class="book-opt zotel" target="_blank">
+                <span class="book-opt-name">Book on Zotel.ai</span>
+                <span class="book-opt-desc">Official listing &middot; Best rates</span>
+            </a>
+            <a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20stay%20at%20Laxmi%20Tharavadu" class="book-opt" target="_blank">
                 <span class="book-opt-name">WhatsApp</span>
-                <span class="book-opt-desc">Direct booking</span>
-            </a>
-            <a href="https://www.airbnb.co.in/rooms/1093995311501169331" class="book-opt" target="_blank">
-                <span class="book-opt-name">Airbnb</span>
-                <span class="book-opt-desc">Verified reviews</span>
-            </a>
-            <a href="https://www.makemytrip.com/hotels/laxmi_tharavadu_heritage_home-details-talipparamba.html" class="book-opt" target="_blank">
-                <span class="book-opt-name">MakeMyTrip</span>
-                <span class="book-opt-desc">Instant confirmation</span>
-            </a>
-            <a href="https://www.goibibo.com/hotels/laxmi-ayur-tharavadu-hotel-in-talipparamba-519764177222875938/" class="book-opt" target="_blank">
-                <span class="book-opt-name">Goibibo</span>
-                <span class="book-opt-desc">Best price deals</span>
+                <span class="book-opt-desc">Direct enquiry</span>
             </a>
         </div>
         <div class="contact-row">
             <div class="c-item">
                 <div class="c-lbl">Call or WhatsApp</div>
-                <div class="c-val"><a href="tel:+919744603000">+91 97446 03000</a></div>
+                <div class="c-val"><a href="https://wa.me/919744603000" target="_blank">+91 97446 03000</a></div>
             </div>
             <div class="c-item">
                 <div class="c-lbl">Location</div>
@@ -1368,18 +1403,20 @@
 <!-- ═══════════════════════════════
      WHATSAPP FAB — official SVG
 ═══════════════════════════════ -->
-<a href="https://wa.me/919744603000" class="wa-fab" target="_blank" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/919744603000?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Laxmi%20Tharavadu" class="wa-fab" target="_blank" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
     <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
 </a>
 
 <!-- ═══════════════════════════════
      CHAT FAB + WINDOW
 ═══════════════════════════════ -->
-<div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Ask us anything" aria-label="Chat with us">
-    <!-- speech bubble icon -->
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.043.74 3.923 1.967 5.415L3 21l4.734-1.396A10.265 10.265 0 0 0 12 20.486C17.523 20.486 22 16.34 22 11.243 22 6.145 17.523 2 12 2Z" stroke="rgba(240,184,0,0.75)" stroke-width="1.5" fill="none"/>
-    </svg>
+<div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Ask Laxmi AI" aria-label="Ask Laxmi AI">
+    <div class="chat-fab-inner">
+        <span class="chat-fab-ai">AI</span>
+        <div class="chat-fab-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
 </div>
 
 <div class="chat-window" id="chatWindow">
@@ -1390,8 +1427,8 @@
             </svg>
         </div>
         <div>
-            <div class="chat-name">Laxmi Concierge</div>
-            <div class="chat-status">Usually replies instantly</div>
+            <div class="chat-name">Laxmi AI</div>
+            <div class="chat-status">Powered by AI &middot; Instant answers</div>
         </div>
         <button class="chat-x" onclick="toggleChat()">&#10005;</button>
     </div>
@@ -1504,14 +1541,14 @@ const FAQ_KB = [
     { k:['pet','dog','cat','animal'], a:'Yes — Laxmi Tharavadu is proudly pet-friendly. Furry companions are very welcome here.' },
     { k:['wifi','internet'], a:'Yes, complimentary WiFi is available throughout the property.' },
     { k:['park','parking','car'], a:'Yes, free onsite parking is available for up to 3 cars.' },
-    { k:['whole','entire','group','family','all rooms'], a:'The entire property can be booked privately for up to 14 guests. WhatsApp us at +91 97446 03000 for group rates and availability.' },
+    { k:['whole','entire','group','family','all rooms'], a:'The entire property can be booked privately for up to 14 guests. WhatsApp us at +91 97446 03000 for group rates, or check availability on zotel.ai/hotels/laxmi-tharavadu-heritage-home.' },
     { k:['airport','flight','train','railway','station','reach'], a:'Kannur International Airport is ~40 km away. Kannapuram Railway Station is 8.5 km away. We can arrange pickup and drop.' },
     { k:['photo','shoot','photography','wedding','reel'], a:'Laxmi is one of Kannur\'s most sought-after photography locations. The lotus pond courtyard, the oonjal, carved heritage beams — all extremely photogenic. Contact us to plan your shoot.' },
     { k:['cancel','refund'], a:'Free cancellation until 11:59 AM the day before check-in for direct bookings. Platform bookings follow their own policy.' },
     { k:['tharavadu','heritage','history','old','1920'], a:'A Tharavadu is a traditional Kerala ancestral home. Laxmi Tharavadu was built in the 1920s and once housed a family of nine. The original architecture — nadumuttam courtyard with lotus pond, carved pillars, and the oonjal — is fully preserved.' },
     { k:['miyawaki','forest','nature','birds','bird'], a:'The grounds use the Miyawaki planting method — dense native woodland that draws birds and wildlife unique to North Kerala. The morning bird chorus is one of the most-mentioned highlights by guests.' },
     { k:['nearby','temple','beach','hill','theyyam','places'], a:'Sri Rajarajeshwara Temple (5.4 km), Parassinikadavu Muthappan Temple (9.1 km), Theyyam performances, Paithalmala Hill Station (~20 km), and Chootad Beach are all within easy reach.' },
-    { k:['book','reserve','contact','whatsapp','call'], a:'The easiest way is WhatsApp at +91 97446 03000. We also list on Airbnb, MakeMyTrip, and Goibibo.' },
+    { k:['book','reserve','contact','whatsapp','call','zotel'], a:'You can book directly on our official listing at zotel.ai/hotels/laxmi-tharavadu-heritage-home or WhatsApp us at +91 97446 03000 for a personal response.' },
     { k:['bonfire','bbq','barbeque','fire','evening'], a:'Yes — bonfire evenings in the garden are one of the best things about Laxmi. BBQ can also be arranged. Just mention it when you book.' },
     { k:['hello','hi','hey','namaste'], a:'Namaste! Welcome to Laxmi Tharavadu. I am happy to answer any questions about our heritage home in Thaliparamba, Kannur. What would you like to know?' },
 ];
@@ -1524,7 +1561,7 @@ function toggleChat() {
     document.getElementById('chatWindow').classList.toggle('open', chatOpen);
     if (chatOpen && !chatGreeted) {
         chatGreeted = true;
-        setTimeout(() => addBot('Namaste! Welcome to Laxmi Tharavadu. How can I help you today?', true), 320);
+        setTimeout(() => addBot('Namaste! I am Laxmi AI — here to answer your questions about rooms, stays, experiences, and how to reach us. What would you like to know?', true), 320);
     }
     if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 380);
 }
@@ -1554,7 +1591,7 @@ function sendMsg() {
     msgs.appendChild(um); msgs.scrollTop = msgs.scrollHeight;
     setTimeout(() => {
         const q = txt.toLowerCase();
-        let reply = 'That is a great question. For the most accurate answer, please WhatsApp us at +91 97446 03000 and our team will respond promptly.';
+        let reply = 'That is a great question. For the most accurate answer, please WhatsApp us at +91 97446 03000 or visit zotel.ai/hotels/laxmi-tharavadu-heritage-home to check availability.';
         for (const item of FAQ_KB) {
             if (item.k.some(k => q.includes(k))) { reply = item.a; break; }
         }
